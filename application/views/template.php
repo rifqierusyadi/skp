@@ -34,7 +34,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        SKP ONLINE
+        SKP ONLINE KALSEL
         <small>Beta 1.0</small>
       </h1>
       <ol class="breadcrumb">
