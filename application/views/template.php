@@ -20,7 +20,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-green fixed sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php $this->load->view("partials/header"); ?>
@@ -44,7 +44,7 @@
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
-      <div class="box">
+      <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title"></h3>
           <div class="box-tools pull-right">
