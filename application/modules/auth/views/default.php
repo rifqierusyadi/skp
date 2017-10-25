@@ -27,14 +27,26 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg"></p>
+    <?php if($this->session->flashdata('flashconfirm')): ?>
+    <div class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <?php echo $this->session->flashdata('flashconfirm'); ?>
+    </div>
+    <?php endif; ?>
+    <?php if($this->session->flashdata('flasherror')): ?>
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <?php echo $this->session->flashdata('flasherror'); ?>
+    </div>
+    <?php endif; ?>
 
-    <form action="" method="post">
+    <form action="<?= site_url('auth/login'); ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" name="email" class="form-control" placeholder="Email" value="<?= set_value('email'); ?>">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password" value="<?= set_value('password'); ?>">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

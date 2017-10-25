@@ -21,7 +21,6 @@ class Dashboard extends CI_Controller {
 		$data['content'] 	= $this->folder.'default';
 		//$data['style'] 	= $this->folder.'style';
 		//$data['js'] 		= $this->folder.'js';
-		
 		$this->load->view('template', $data);
 	}
 }
