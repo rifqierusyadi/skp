@@ -40,7 +40,7 @@
     </div>
     <?php endif; ?>
 
-    <form action="<?= site_url('auth/login'); ?>" method="post">
+    <?= form_open('auth/login'); ?>
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email" value="<?= set_value('email'); ?>">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -63,7 +63,7 @@
         </div>
         <!-- /.col -->
       </div>
-    </form>
+    <?= form_close(); ?>
 
     <!-- <div class="social-auth-links text-center">
       <p>- OR -</p>

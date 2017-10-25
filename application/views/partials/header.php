@@ -46,7 +46,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?= base_url('asset/dist/img/avatar5.png'); ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs">M. Muchlish, A.Md</span>
+              <span class="hidden-xs">&nbsp;</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -54,7 +54,7 @@
                 <img src="<?= base_url('asset/dist/img/avatar5.png'); ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  M. Muchlish, A.Md <br> Web Developer
+                  <?= $this->session->userdata('name'); ?> <br>
                   <small>Member since Okt. 2017</small>
                 </p>
               </li>
@@ -64,7 +64,7 @@
                   <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Profil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Keluar</a>
+                  <a href="<?= site_url('logout'); ?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Keluar</a>
                 </div>
               </li>
             </ul>

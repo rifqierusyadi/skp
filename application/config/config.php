@@ -381,7 +381,7 @@ $config['encryption_key'] = 'skp0nL1n3b3k4d3k4ls3L@)!&';
 |
 */
 $config['sess_driver'] = 'database';
-$config['sess_cookie_name'] = 'skp_session';
+$config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = 'sessions';
 $config['sess_match_ip'] = FALSE;

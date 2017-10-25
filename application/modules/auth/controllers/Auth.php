@@ -52,6 +52,7 @@ class Auth extends CI_Controller {
 				$create_session = array(
 					//'userID'=> $user_ID,
 					'username' => $json[0]->username,
+					'name' => $json[0]->name,
 					'ip_address'=> $ip_address,
 					'signin' => TRUE,
 					'level' => $json[0]->class
@@ -82,13 +83,22 @@ class Auth extends CI_Controller {
 		return password_verify($pass_post, $hash);	
 	}
 
-	public function text()
+	public function logout()
 	{
-		$json = array();
-		$url = 'https://simpeg.kalselprov.go.id/api/auth?email=admin@admin.com';
-		$data = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
-		$json = json_decode($data);
-		$email_post = $json['email'];
-		var_dump($json[0]->password);
+		$this->session->unset_userdata('userID');
+		$this->session->unset_userdata('password');
+		$this->session->sess_destroy();
+		//helper_log("logout", "Logout Pada Sistem");
+		redirect('login');
 	}
+
+	// public function text()
+	// {
+	// 	$json = array();
+	// 	$url = 'https://simpeg.kalselprov.go.id/api/auth?email=admin@admin.com';
+	// 	$data = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+	// 	$json = json_decode($data);
+	// 	$email_post = $json['email'];
+	// 	var_dump($json[0]->password);
+	// }
 }
