@@ -95,12 +95,6 @@
 <script src="<?= base_url('asset/plugins/jquery-slimscroll/jquery.slimscroll.min.js'); ?>"> </script>
 <script src="<?= base_url('asset/plugins/fastclick/lib/fastclick.js'); ?>"></script>
 <script src="<?= base_url('asset/dist/js/adminlte.min.js'); ?>"> </script>
-<script>
-$(document).ready(function() {
-    $('#data').DataTable({
-        responsive: true
-    });
-});
-</script>
+<script src="<?= base_url('asset/app.js'); ?>"> </script>
 </body>
 </html>
