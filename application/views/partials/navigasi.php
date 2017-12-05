@@ -24,7 +24,15 @@
 
           <li>
               <a href= "<?= site_url('userskp');?>">
-            <i class="fa fa-user"></i> <span>Profil PNS</span>
+            <i class="fa fa-user"></i> <span>Data Pegawai</span>
+                <span class="pull-right-container">
+                  <span class="label label-primary pull-right"></span>
+                </span>
+          </a>
+          </li>
+          <li>
+              <a href= "<?= site_url('userskp');?>">
+            <i class="fa fa-users"></i> <span>Daftar Pegawai</span>
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right"></span>
                 </span>
@@ -32,42 +40,17 @@
           </li>
           <li class="treeview">
                     <a href="#">
-                      <i class="fa fa-list"></i> <span>Rencana SKP</span>
+                      <i class="fa fa-list"></i> <span>SKP & Prilaku Kerja</span>
                       <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                  <li><a href="rencana.html"><i class="fa fa-circle-o"></i> Isian Rencana SKP </a></li>
-                      <li><a href="konfigurasi.html"><i class="fa fa-circle-o"></i> Isian Pejabat Penilai </a></li>
-                      <li><a href="persetujuan.html"><i class="fa fa-circle-o"></i> Persetujuan SKP </a></li>
-                      <li><a href="cetak.html"><i class="fa fa-circle-o"></i> Cetak SKP </a></li>
-                  <li><a href="cetak.html"><i class="fa fa-circle-o"></i> Daftar PNS Dinilai </a></li>
+                  <li><a href="#"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Adendum </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
-          </li>
-		
-          <li class="treeview">
-                    <a href="#">
-                      <i class="fa fa-file-text"></i> <span>Realisasi SKP</span>
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Isian Realisasi SKP </a></li>
-                      <li><a href="profile.html"><i class="fa fa-circle-o"></i> Isian Pejabat Penilai </a></li>
-                  <li><a href="konfigurasi.html"><i class="fa fa-circle-o"></i> Cetak SKP </a></li>
-                      <li><a href="login.html"><i class="fa fa-circle-o"></i> Daftar PNS Dinilai </a></li>
-                  </ul>
-          </li>
-		
-          <li>
-                <a href="#">
-              <i class="fa fa-balance-scale"> </i><span> Banding </span>
-                  <span class="pull-right-container">
-                    <span class="label label-primary pull-right"></span>
-                  </span>
-                </a>
           </li>
 		
           <li class="treeview">
@@ -78,10 +61,24 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Rekap PNS </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Rekap PNS </a></li>
                   </ul>
           </li>
-		
+          <li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-book"></i> <span>Master</span>
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?= site_url('referensi/instansi'); ?>"><i class="fa fa-circle-o"></i> Referensi Instansi </a></li>
+                      <li><a href="<?= site_url('referensi/unker'); ?>"><i class="fa fa-circle-o"></i> Referensi Unit Kerja </a></li>
+                      <li><a href="<?= site_url('referensi/satker'); ?>"><i class="fa fa-circle-o"></i> Referensi Satuan Kerja </a></li>
+                      <li><a href="<?= site_url('referensi/pangkat'); ?>"><i class="fa fa-circle-o"></i> Referensi Pangkat </a></li>
+                      <li><a href="<?= site_url('referensi/jabatan'); ?>"><i class="fa fa-circle-o"></i> Referensi Jabatan </a></li>
+                  </ul>
+          </li>
           <li class="treeview">
                     <a href="#">
                       <i class="fa fa-gears"></i> <span>Pengaturan</span>
@@ -90,8 +87,8 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Manajemen Pengguna </a></li>
-                      <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Manajemen Informasi </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Manajemen Pengguna </a></li>
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Manajemen Informasi </a></li>
                   </ul>
           </li>
           <li>

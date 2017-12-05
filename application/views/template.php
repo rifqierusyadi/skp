@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href= "<?= base_url('asset/plugins/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>" >
   <link rel="stylesheet" href= "<?= base_url('asset/dist/css/AdminLTE.min.css'); ?>" >
   <link rel="stylesheet" href= "<?= base_url('asset/dist/css/skins/_all-skins.min.css'); ?>" >
+  <link rel="stylesheet" href="<?= base_url('asset/plugins/select2/dist/css/select2.min.css'); ?>" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -19,6 +20,8 @@
   <![endif]-->
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <?= isset($style) ? $this->load->view($style) : ''; ?>
+  <style>.has-error .select2-selection {border: 1px solid #a94442;border-radius: 0px;}</style>
 </head>
 <body class="hold-transition skin-green fixed sidebar-mini">
 <!-- Site wrapper -->
@@ -44,31 +47,9 @@
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title"></h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
-        </div>
-				<!-- Page Content -->
-	       <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-									<div class="box-body">
-									<?php $this->load->view($content); ?>
-                  </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
+      <?php $this->load->view($content); ?>
+      <!-- Page Content -->
+      <!-- /#page-wrapper -->
     </section>
     <!-- /.content -->
   </div>
@@ -95,6 +76,8 @@
 <script src="<?= base_url('asset/plugins/jquery-slimscroll/jquery.slimscroll.min.js'); ?>"> </script>
 <script src="<?= base_url('asset/plugins/fastclick/lib/fastclick.js'); ?>"></script>
 <script src="<?= base_url('asset/dist/js/adminlte.min.js'); ?>"> </script>
+<script src="<?= base_url('asset/plugins/select2/dist/js/select2.full.min.js'); ?>"></script>
 <script src="<?= base_url('asset/app.js'); ?>"> </script>
+<?= isset($js) ? $this->load->view($js) : ''; ?>
 </body>
 </html>

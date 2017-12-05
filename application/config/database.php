@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => 'root',
 	'database' => 'dbase_skp',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'skp_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
