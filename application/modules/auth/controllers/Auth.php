@@ -32,7 +32,8 @@ class Auth extends CI_Controller {
 			//$pass_post = $this->input->post('password');
 			$json = array();
 			//$url = 'http://localhost/pegawai/api/auth?email=admin@admin.com';
-			$url = 'https://simpeg.kalselprov.go.id/api/auth?email='.$this->input->post('email');
+			//$url = 'https://simpeg.kalselprov.go.id/api/auth?email='.$this->input->post('email');
+			$url = 'http://localhost/pegawai/api/auth?email='.$this->input->post('email');
 			$data = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 			if($data){
 				$json = json_decode($data);
@@ -50,9 +51,12 @@ class Auth extends CI_Controller {
 				//$level = $this->_get_level($email_post);
 				
 				$create_session = array(
-					//'userID'=> $user_ID,
-					'username' => $json[0]->username,
+					'nip'=> $json[0]->nip,
 					'name' => $json[0]->name,
+					'username' => $json[0]->username,
+					'email' => $json[0]->email,
+					'unker' => $json[0]->unker,
+					'satker' => $json[0]->satker,
 					'ip_address'=> $ip_address,
 					'signin' => TRUE,
 					'level' => $json[0]->class

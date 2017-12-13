@@ -15,22 +15,34 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="form-group <?php echo form_error('kode') ? 'has-error' : null; ?>">
+						<div class="form-group <?php echo form_error('judul') ? 'has-error' : null; ?>">
 							<?php
-							echo form_label('Kode','kode');
-							$data = array('class'=>'form-control','name'=>'kode','id'=>'kode','type'=>'text','value'=>set_value('kode', $record->kode));
+							echo form_label('Judul','judul');
+							$data = array('class'=>'form-control','name'=>'judul','id'=>'judul','type'=>'text','value'=>set_value('judul', $record->judul));
 							echo form_input($data);
-							echo form_error('kode') ? form_error('kode', '<p class="help-block">','</p>') : '';
+							echo form_error('judul') ? form_error('judul', '<p class="help-block">','</p>') : '';
+							?>
+						</div>
+					</div>
+					
+					<div class="col-md-12">
+						<div class="form-group <?php echo form_error('informasi') ? 'has-error' : null; ?>">
+							<?php
+							echo form_label('Informasi','informasi');
+							?>
+							<textarea class='form-control' name='informasi' id='informasi'><?= set_value('informasi', $record->informasi); ?></textarea>
+							<?php
+							echo form_error('informasi') ? form_error('informasi', '<p class="help-block">','</p>') : '';
 							?>
 						</div>
 					</div>
 					<div class="col-md-12">
-						<div class="form-group <?php echo form_error('instansi') ? 'has-error' : null; ?>">
+						<div class="form-group <?php echo form_error('tanggal') ? 'has-error' : null; ?>">
 							<?php
-							echo form_label('Nama Instansi','instansi');
-							$data = array('class'=>'form-control','name'=>'instansi','id'=>'instansi','type'=>'text','value'=>set_value('instansi', $record->instansi));
+							echo form_label('Tanggal','tanggal');
+							$data = array('class'=>'form-control','name'=>'tanggal','id'=>'tanggal','type'=>'text','value'=>set_value('tanggal', ddmmyyyy($record->tanggal)));
 							echo form_input($data);
-							echo form_error('instansi') ? form_error('instansi', '<p class="help-block">','</p>') : '';
+							echo form_error('tanggal') ? form_error('tanggal', '<p class="help-block">','</p>') : '';
 							?>
 						</div>
 					</div>

@@ -15,16 +15,6 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="form-group <?php echo form_error('instansi') ? 'has-error' : null; ?>">
-							<?php
-							echo form_label('Instansi','instansi');
-							$selected = set_value('instansi', $record->instansi);
-							echo form_dropdown('instansi', $instansi, $selected, "class='form-control select2' name='instansi' id='instansi'");
-							echo form_error('instansi') ? form_error('instansi', '<p class="help-block">','</p>') : '';
-							?>
-						</div>
-					</div>
-					<div class="col-md-12">
 						<div class="form-group <?php echo form_error('kode') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Kode','kode');
@@ -35,12 +25,12 @@
 						</div>
 					</div>
 					<div class="col-md-12">
-						<div class="form-group <?php echo form_error('unker') ? 'has-error' : null; ?>">
+						<div class="form-group <?php echo form_error('instansi') ? 'has-error' : null; ?>">
 							<?php
-							echo form_label('Unit Kerja','unker');
-							$data = array('class'=>'form-control','name'=>'unker','id'=>'unker','type'=>'text','value'=>set_value('unker', $record->unker));
+							echo form_label('Nama Instansi','instansi');
+							$data = array('class'=>'form-control','name'=>'instansi','id'=>'instansi','type'=>'text','value'=>set_value('instansi', $record->instansi));
 							echo form_input($data);
-							echo form_error('unker') ? form_error('unker', '<p class="help-block">','</p>') : '';
+							echo form_error('instansi') ? form_error('instansi', '<p class="help-block">','</p>') : '';
 							?>
 						</div>
 					</div>

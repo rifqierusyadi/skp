@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Unker_m extends MY_Model
+class Informasi_m extends MY_Model
 {
-	public $table = 'ref_unker'; // you MUST mention the table name
+	public $table = 'informasi'; // you MUST mention the table name
 	public $primary_key = 'id'; // you MUST mention the primary key
 	public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
 	public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update
 	
 	//ajax datatable
-    public $column_order = array('id','kode','instansi',null); //set kolom field database pada datatable secara berurutan
-    public $column_search = array('kode','instansi',); //set kolom field database pada datatable untuk pencarian
-    public $order = array('kode' => 'asc'); //order baku 
+    public $column_order = array('id','judul','tanggal',null); //set kolom field database pada datatable secara berurutan
+    public $column_search = array('judul','tanggal'); //set kolom field database pada datatable untuk pencarian
+    public $order = array('id' => 'asc'); //order baku 
 	
 	public function __construct()
 	{
@@ -24,9 +24,10 @@ class Unker_m extends MY_Model
     {
         $record = new stdClass();
         $record->id = '';
-		$record->kode = '';
-		$record->instansi = '';
-        return $record;
+		$record->judul = '';
+		$record->informasi = '';
+		$record->tanggal = date('yyyy-mm-dd');
+		return $record;
     }
 	
 	//urusan lawan datatable
@@ -96,6 +97,5 @@ class Unker_m extends MY_Model
         $query = $this->db->get($this->table);
         return $query->row();
     }
-	
 
 }

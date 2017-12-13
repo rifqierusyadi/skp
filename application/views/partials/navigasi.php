@@ -31,7 +31,7 @@
           </a>
           </li>
           <li>
-              <a href= "<?= site_url('userskp');?>">
+              <a href= "<?= site_url('profil');?>">
             <i class="fa fa-users"></i> <span>Daftar Pegawai</span>
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right"></span>
@@ -75,8 +75,6 @@
                       <li><a href="<?= site_url('referensi/instansi'); ?>"><i class="fa fa-circle-o"></i> Referensi Instansi </a></li>
                       <li><a href="<?= site_url('referensi/unker'); ?>"><i class="fa fa-circle-o"></i> Referensi Unit Kerja </a></li>
                       <li><a href="<?= site_url('referensi/satker'); ?>"><i class="fa fa-circle-o"></i> Referensi Satuan Kerja </a></li>
-                      <li><a href="<?= site_url('referensi/pangkat'); ?>"><i class="fa fa-circle-o"></i> Referensi Pangkat </a></li>
-                      <li><a href="<?= site_url('referensi/jabatan'); ?>"><i class="fa fa-circle-o"></i> Referensi Jabatan </a></li>
                   </ul>
           </li>
           <li class="treeview">
@@ -88,7 +86,7 @@
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="#"><i class="fa fa-circle-o"></i> Manajemen Pengguna </a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Manajemen Informasi </a></li>
+                      <li><a href="<?= site_url('setting/informasi'); ?>"><i class="fa fa-circle-o"></i> Manajemen Informasi </a></li>
                   </ul>
           </li>
           <li>
@@ -102,5 +100,3 @@
     </section>
     <!-- /.sidebar -->
 </aside>
-
-  

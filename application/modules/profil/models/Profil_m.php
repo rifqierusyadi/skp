@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Unker_m extends MY_Model
+class Profil_m extends MY_Model
 {
-	public $table = 'ref_unker'; // you MUST mention the table name
+	public $table = 'pegawai'; // you MUST mention the table name
 	public $primary_key = 'id'; // you MUST mention the primary key
 	public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
 	public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update
 	
 	//ajax datatable
-    public $column_order = array('id','kode','instansi',null); //set kolom field database pada datatable secara berurutan
-    public $column_search = array('kode','instansi',); //set kolom field database pada datatable untuk pencarian
-    public $order = array('kode' => 'asc'); //order baku 
+    public $column_order = array(null); //set kolom field database pada datatable secara berurutan
+    public $column_search = array(); //set kolom field database pada datatable untuk pencarian
+    public $order = array(); //order baku 
 	
 	public function __construct()
 	{
@@ -25,7 +25,14 @@ class Unker_m extends MY_Model
         $record = new stdClass();
         $record->id = '';
 		$record->kode = '';
-		$record->instansi = '';
+		$record->instansi_id = '';
+		$record->unker_id = '';
+		$record->parent_id = '';
+		$record->satker = '';
+		$record->upt = '';
+		$record->alamat = '';
+		$record->email = '';
+		$record->telpon = '';
         return $record;
     }
 	
@@ -84,7 +91,7 @@ class Unker_m extends MY_Model
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
         $this->db->where('deleted_at', NULL);
-        $this->db->limit($_POST['length'], $_POST['start']);
+		$this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
     }
@@ -94,8 +101,78 @@ class Unker_m extends MY_Model
         $this->db->where('id', $id);
 		$this->db->where('deleted_at', NULL);
         $query = $this->db->get($this->table);
-        return $query->row();
+		if($query->num_rows() > 0){
+			return $query->row();	
+		}else{
+			//show_404();
+			return FALSE;
+		}
+        
     }
 	
-
+	public function get_instansi()
+	{
+        $query = $this->db->where('deleted_at',NULL)->order_by('kode', 'ASC')->get('ref_instansi');
+        if($query->num_rows() > 0){
+        $dropdown[] = 'Pilih instansi Kerja';
+		foreach ($query->result() as $row)
+		{
+			$dropdown[$row->kode] = $row->kode.' - '.$row->instansi;
+		}
+        }else{
+            $dropdown[] = 'Belum Ada Instansi Tersedia'; 
+        }
+		return $dropdown;
+	}
+	
+	public function get_unker($instansi=null)
+	{
+		$this->db->where('deleted_at',NULL);
+        $this->db->where('instansi', $instansi);
+        $query = $this->db->order_by('kode', 'ASC')->get('ref_unker');
+        if($query->num_rows() > 0){
+        $dropdown[] = 'Pilih Unit Kerja';
+		foreach ($query->result() as $row)
+		{
+			$dropdown[$row->kode] = $row->kode.' - '.$row->unker;
+		}
+        }else{
+            $dropdown[] = 'Belum Ada Unit Kerja Tersedia';
+        }
+		return $dropdown;
+	}
+	
+	public function get_parent($instansi=null, $unker=null)
+	{
+		$this->db->where('deleted_at',NULL);
+        $this->db->where('instansi_id', $instansi);
+		$this->db->where('unker_id', $unker);
+        $query = $this->db->order_by('kode', 'ASC')->get('ref_satker');
+        if($query->num_rows() > 0){
+        $dropdown[] = 'Pilih Satuan Kerja Induk';
+		foreach ($query->result() as $row)
+		{
+			$dropdown[$row->kode] = $row->kode.' - '.$row->satker;
+		}
+        }else{
+            $dropdown[] = 'Belum Ada Satuan Kerja Induk Tersedia';
+        }
+		return $dropdown;
+	}
+	
+	public function get_kode() {
+		$query = $this->db->query("SELECT MAX(RIGHT(kode,5)) AS kode FROM simpeg_ref_satker");
+		$kode = "";
+	  
+		if($query->num_rows() > 0){ 
+			  foreach($query->result() as $k){
+				  $tmp = ((int)$k->kode)+1;
+				  $kode = sprintf("%05s", $tmp);
+			  }
+		 }else{
+		  $kode = "00001";
+		}
+		$karakter = "S"; 
+		return $karakter.$kode;
+    }
 }

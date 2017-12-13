@@ -13,18 +13,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
-						<table id="tableIDX" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-							<thead>
-								<tr>
-									<th>Kode</th>
-									<th>Satuan Kerja</th>
-									<th>Unit Kerja</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
+						
 					</div>
 				</div>
 			</div>
