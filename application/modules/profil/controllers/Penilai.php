@@ -1,37 +1,37 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profil extends CI_Controller {
+class Penilai extends CI_Controller {
 
 	/**
 	 * code by rifqie rusyadi
 	 * email rifqie.rusyadi@gmail.com
 	 */
 	
-	public $folder = 'profil/profil/';
+	public $folder = 'profil/penilai/';
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('profil_m', 'data');
+		$this->load->model('penilai_m', 'data');
+		$this->load->helper('my_helper');
 		signin();
-		group(array('1'));
 	}
 	
 	//halaman index
 	public function index()
 	{
 		$json = array();
-		$url = 'http://localhost/pegawai/api/identitas?nip='.$this->session->userdata('nip');
-		//$url = 'http://localhost/pegawai/api/identitas?nip=198911272015031001';
-		$profil = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
-		if($profil){
-			$json = json_decode($profil);
+		//$url = 'http://localhost/pegawai/api/identitas?nip='.$this->session->userdata('nip');
+		$url = 'http://localhost/pegawai/api/identitas?nip=198911272015031001';
+		$penilai = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+		if($penilai){
+			$json = json_decode($penilai);
 		}
 		//var_dump($this->session->userdata('nip'));
 		
 		$data['head'] 		= 'Data Profil';
-		$data['profil'] 	= $json;
+		$data['record'] 	= FALSE;
 		$data['content'] 	= $this->folder.'default';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';
@@ -75,11 +75,11 @@ class Profil extends CI_Controller {
             $col = array();
             $col[] = '<input type="checkbox" class="data-check" value="'.$row->id.'">';
             $col[] = $row->kode;
-			$col[] = $row->profil;
+			$col[] = $row->penilai;
 			$col[] = $row->unker;
             $col[] = $row->instansi;
             //add html for action
-            $col[] = '<a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('profilupdated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+            $col[] = '<a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('penilaiupdated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
                   <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted('."'".$row->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
  
             $data[] = $col;
@@ -103,7 +103,7 @@ class Profil extends CI_Controller {
                 'unker_id' => $this->input->post('unker'),
 				'parent_id' => $this->input->post('parent'),
 				'kode' => $kode,
-				'profil' => $this->input->post('profil'),
+				'penilai' => $this->input->post('penilai'),
 				'upt' => $this->input->post('upt'),
 				'alamat' => $this->input->post('alamat'),
 				'email' => $this->input->post('email'),
@@ -122,7 +122,7 @@ class Profil extends CI_Controller {
 				'instansi_id' => $this->input->post('instansi'),
                 'unker_id' => $this->input->post('unker'),
 				'parent_id' => $this->input->post('parent'),
-				'profil' => $this->input->post('profil'),
+				'penilai' => $this->input->post('penilai'),
 				'upt' => $this->input->post('upt'),
 				'alamat' => $this->input->post('alamat'),
 				'email' => $this->input->post('email'),
@@ -160,12 +160,12 @@ class Profil extends CI_Controller {
 		if(!isset($id)){
 			$this->form_validation->set_rules("instansi", "Instansi Kerja", "trim|required");
 			$this->form_validation->set_rules("unker", "Unit Kerja", "trim|required");
-			$this->form_validation->set_rules("profil", "Satuan Kerja", "trim|required");
+			$this->form_validation->set_rules("penilai", "Satuan Kerja", "trim|required");
 			$this->form_validation->set_rules("parent", "Satuan Kerja Induk", "trim");
 		}else{
 			$this->form_validation->set_rules("instansi", "Instansi Kerja", "trim|required");
 			$this->form_validation->set_rules("unker", "Unit Kerja", "trim|required");
-			$this->form_validation->set_rules("profil", "Satuan Kerja", "trim|required");
+			$this->form_validation->set_rules("penilai", "Satuan Kerja", "trim|required");
 			$this->form_validation->set_rules("parent", "Satuan Kerja Induk", "trim");
 		}
         
@@ -201,7 +201,7 @@ class Profil extends CI_Controller {
         }
     }
 	
-	public function get_profil(){
+	public function get_penilai(){
         $record = $this->data->get_id($this->uri->segment(4));
         $instansi = $this->input->post('instansi');
 		$unker = $this->input->post('unker');

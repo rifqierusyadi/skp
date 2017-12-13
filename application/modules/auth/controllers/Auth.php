@@ -89,10 +89,7 @@ class Auth extends CI_Controller {
 
 	public function logout()
 	{
-		$this->session->unset_userdata('userID');
-		$this->session->unset_userdata('password');
 		$this->session->sess_destroy();
-		//helper_log("logout", "Logout Pada Sistem");
 		redirect('login');
 	}
 

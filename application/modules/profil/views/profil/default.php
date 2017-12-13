@@ -1,40 +1,101 @@
 <div class="row">
 	<div class="col-md-12">
-		<div id="message"></div>
-		<div class="box box-success box-solid">
-			<div class="box-header with-border">
-				<h3 class="box-title"><?= isset($head) ? $head : ''; ?></h3>
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-				</div>
-			</div>
-			<!-- box-body -->
-			<div class="box-body">
-				<div class="row">
-					<div class="col-md-12">
-						<a class="btn btn-sm btn-flat btn-success" onclick="add_data();" href="<?= site_url('referensi/satker/created'); ?>"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
-						<button class="btn btn-sm btn-flat btn-danger" onclick="deleted_all();"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
-						<button class="btn btn-sm btn-flat btn-default" data-toggle="tooltip" title="Reload Data" data-placement="right" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i></button>
-						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
-						<table id="tableIDX" class="table table-striped table-bordered responsive nowrap" cellspacing="0" width="100%">
-							<thead>
-								<tr>
-									<th width="5px"><input type="checkbox" id="check-all"></th>
-									<th>Kode</th>
-									<th>Satuan Kerja</th>
-									<th>Unit Kerja</th>
-									<th>Instansi</th>
-									<th width="30px">Aksi</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<!-- ./box-body -->
+		<div class="box box-solid">
+		<div class="box-header with-border">
+			<i class="fa fa-user"></i>
+			<h3 class="box-title">Pegawai Yang Dinilai</h3>
 		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<dl class="dl-horizontal">
+			<dt>NIP</dt>
+			<dd><?= $profil ? $profil[0]->nip : '-'; ?></dd>
+			<dt>Nama Lengkap</dt>
+			<dd><?= $profil ? $profil[0]->nama : '-'; ?></dd>
+			<dt>Pangkat. Gol. Ruang</dt>
+			<dd><?= $profil ? $profil[0]->golongan : '-'; ?></dd>
+			<dt>Jabatan</dt>
+			<dd><?= $profil ? $profil[0]->jabatan : '-'; ?></dd>
+			<dt>Satuan Kerja</dt>
+			<dd><?= $profil ? $profil[0]->satker : '-'; ?></dd>
+			<dt>Unit Kerja</dt>
+			<dd><?= $profil ? $profil[0]->unker : '-'; ?></dd>
+			<dt>Instansi Kerja</dt>
+			<dd><?= $profil ? $profil[0]->instansi : '-'; ?></dd>
+			</dl>
+		</div>
+		<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-solid">
+		<div class="box-header with-border">
+			<i class="fa fa-user"></i>
+			<h3 class="box-title">Pejabat Penilai</h3>
+			<div class="pull-right">
+			<a href="<?= site_url('profil/penilai'); ?>" class="btn btn-xs btn-success btn-flat"><i class="fa fa-pencil"></i> Set Data</a>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<dl class="dl-horizontal">
+			<dt>NIP</dt>
+			<dd>-</dd>
+			<dt>Nama Lengkap</dt>
+			<dd>-</dd>
+			<dt>Pangkat. Gol. Ruang</dt>
+			<dd>-</dd>
+			<dt>Jabatan</dt>
+			<dd>-</dd>
+			<dt>Satuan Kerja</dt>
+			<dd>-</dd>
+			<dt>Unit Kerja</dt>
+			<dd>-</dd>
+			<dt>Instansi Kerja</dt>
+			<dd>-</dd>
+			</dl>
+		</div>
+		<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-solid">
+		<div class="box-header with-border">
+			<i class="fa fa-user"></i>
+			<h3 class="box-title">Atasan Pejabat Penilai</h3>
+			<div class="pull-right">
+			<a href="" class="btn btn-xs btn-success btn-flat"><i class="fa fa-pencil"></i> Set Data</a>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<dl class="dl-horizontal">
+			<dt>NIP</dt>
+			<dd>-</dd>
+			<dt>Nama Lengkap</dt>
+			<dd>-</dd>
+			<dt>Pangkat. Gol. Ruang</dt>
+			<dd>-</dd>
+			<dt>Jabatan</dt>
+			<dd>-</dd>
+			<dt>Satuan Kerja</dt>
+			<dd>-</dd>
+			<dt>Unit Kerja</dt>
+			<dd>-</dd>
+			<dt>Instansi Kerja</dt>
+			<dd>-</dd>
+			</dl>
+		</div>
+		<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
 	</div>
 </div>

@@ -23,7 +23,7 @@
           </li>
 
           <li>
-              <a href= "<?= site_url('userskp');?>">
+              <a href= "<?= site_url('profil');?>">
             <i class="fa fa-user"></i> <span>Data Pegawai</span>
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right"></span>
@@ -31,12 +31,12 @@
           </a>
           </li>
           <li>
-              <a href= "<?= site_url('profil');?>">
-            <i class="fa fa-users"></i> <span>Daftar Pegawai</span>
-                <span class="pull-right-container">
-                  <span class="label label-primary pull-right"></span>
-                </span>
-          </a>
+              <a href= "<?= site_url('pegawai');?>">
+              <i class="fa fa-users"></i> <span>Daftar Pegawai</span>
+              <span class="pull-right-container">
+                <span class="label label-primary pull-right"></span>
+              </span>
+              </a>
           </li>
           <li class="treeview">
                     <a href="#">

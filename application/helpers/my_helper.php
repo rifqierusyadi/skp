@@ -44,7 +44,7 @@ if ( ! function_exists('ddMMMyyyy'))
 			$tanggal = $pecah[2];
 			$bulan = bulan($pecah[1]);
 			$tahun = $pecah[0];
-			return strtoupper($tanggal.' '.$bulan.' '.$tahun);
+			return ucwords($tanggal.' '.$bulan.' '.$tahun);
 		}
 	}
 }

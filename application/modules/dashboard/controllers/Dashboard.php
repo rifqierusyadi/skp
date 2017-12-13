@@ -10,14 +10,15 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->load->model('dashboard_m', 'data');
-		//signin();
+		$this->load->model('dashboard_m', 'data');
+		$this->load->helper('my_helper');
+		signin();
 	}
 	
 	public function index()
 	{
 		$data['head'] 		= 'Dashboard';
-		$data['record'] 	= FALSE;
+		$data['record'] 	= $this->data->get_all();
 		$data['content'] 	= $this->folder.'default';
 		//$data['style'] 	= $this->folder.'style';
 		//$data['js'] 		= $this->folder.'js';

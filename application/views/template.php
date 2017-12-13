@@ -21,7 +21,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <?= isset($style) ? $this->load->view($style) : ''; ?>
-  <style>.has-error .select2-selection {border: 1px solid #a94442;border-radius: 0px;}</style>
+  <style>.has-error .select2-selection {border: 1px solid #a94442;border-radius: 0px;}.typeahead { z-index: 1051; }</style>
 </head>
 <body class="hold-transition skin-green fixed sidebar-mini">
 <!-- Site wrapper -->
