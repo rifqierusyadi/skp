@@ -15,23 +15,46 @@ class Profil extends CI_Controller {
 		parent::__construct();
 		$this->load->model('profil_m', 'data');
 		signin();
-		group(array('1'));
+		//group(array('1'));
 	}
 	
 	//halaman index
 	public function index()
 	{
-		$json = array();
-		$url = 'http://localhost/pegawai/api/identitas?nip='.$this->session->userdata('nip');
-		//$url = 'http://localhost/pegawai/api/identitas?nip=198911272015031001';
-		$profil = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+		$profil_json = array();
+		$penilai_json = array();
+		$atasan_json = array();
+		
+		$get_data = $this->db->get_where('pegawai', array('nip'=>$this->session->userdata('nip')))->row();
+		
+		$profil_url = 'http://localhost/pegawai/api/identitas?nip='.$this->session->userdata('nip');
+		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
-			$json = json_decode($profil);
+			$profil_json = json_decode($profil);
 		}
+		
+		if($get_data->penilai){
+			$penilai_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->penilai;
+			$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+			if($penilai){
+				$penilai_json = json_decode($penilai);
+			}
+		}
+
+		if($get_data->atasan){
+			$atasan_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->atasan;
+			$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+			if($atasan){
+				$atasan_json = json_decode($atasan);
+			}
+		}
+	
 		//var_dump($this->session->userdata('nip'));
 		
 		$data['head'] 		= 'Data Profil';
-		$data['profil'] 	= $json;
+		$data['profil'] 	= $profil_json;
+		$data['penilai'] 	= $penilai_json;
+		$data['atasan'] 	= $atasan_json;
 		$data['content'] 	= $this->folder.'default';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';

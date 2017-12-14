@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Penilai extends CI_Controller {
+class Atasan extends CI_Controller {
 
 	/**
 	 * code by rifqie rusyadi
 	 * email rifqie.rusyadi@gmail.com
 	 */
 	
-	public $folder = 'profil/penilai/';
+	public $folder = 'profil/atasan/';
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('penilai_m', 'data');
+		$this->load->model('atasan_m', 'data');
 		$this->load->helper('my_helper');
 		signin();
 	}
@@ -24,9 +24,9 @@ class Penilai extends CI_Controller {
 		$json = array();
 		$url = 'http://localhost/pegawai/api/identitas?nip='.$this->session->userdata('nip');
 		//$url = 'http://localhost/pegawai/api/identitas?nip=198911272015031001';
-		$penilai = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
-		if($penilai){
-			$json = json_decode($penilai);
+		$atasan = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+		if($atasan){
+			$json = json_decode($atasan);
 		}
 		//var_dump($this->session->userdata('nip'));
 		
@@ -44,7 +44,7 @@ class Penilai extends CI_Controller {
 		$find = $this->db->get_where('pegawai', array('nip'=>$this->session->userdata('nip')))->row();
 		
 		$data = array(
-			'penilai' => $this->input->post('nip'),
+			'atasan' => $this->input->post('nip'),
 			'nip' => $this->session->userdata('nip')
 		);
 	

@@ -6,7 +6,7 @@
 			<h3 class="box-title">Pejabat Penilai</h3>
 		</div>
 		<!-- /.box-header -->
-		<form id="formID" role="form" action="<?= site_url('profil/penilai/saved'); ?>" method="post">
+		<form id="formID" role="form" action="<?= site_url('profil/atasan/saved'); ?>" method="post">
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		<!-- box-body -->
 		<div class="box-body">
