@@ -46,7 +46,7 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
+                      <li><a href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
                       <li><a href="#"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
                       <li><a href="#"><i class="fa fa-circle-o"></i> Adendum </a></li>
                       <li><a href="#"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
