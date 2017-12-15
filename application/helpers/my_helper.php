@@ -468,3 +468,40 @@ if ( ! function_exists('rupiah'))
 		}
 	}
 }
+
+if ( ! function_exists('uraian'))
+{
+	function uraian($id)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $id);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_detail');
+        if($query->num_rows() > 0){
+			return count($query->result());
+		}else{
+            return 0;
+        }
+	}
+}
+
+if ( ! function_exists('status'))
+{
+	function status($nip, $tahun)
+	{
+		$CI =& get_instance();
+		$CI->db->where('nip', $nip);
+		$CI->db->where('periode', $tahun);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian');
+        if($query->row()->status == 0){
+			return 'Belum Di Proses';
+		}elseif($query->row()->status == 1){
+			return 'Setuju';
+		}elseif($query->row()->status == 2){
+			return 'Di Tolak';
+		}else{
+			return 'Belum Membuat';
+		}
+	}
+}

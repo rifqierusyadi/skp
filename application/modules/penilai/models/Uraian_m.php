@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Uraian_m extends MY_Model
 {
-	public $table = 'uraian'; // you MUST mention the table name
+	public $table = 'pegawai'; // you MUST mention the table name
 	public $primary_key = 'id'; // you MUST mention the primary key
 	public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
 	public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update
@@ -86,7 +86,6 @@ class Uraian_m extends MY_Model
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
         $this->db->where('deleted_at', NULL);
-        $this->db->where('nip', $this->session->userdata('nip'));
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
@@ -104,7 +103,7 @@ class Uraian_m extends MY_Model
     {
         $this->db->where('id', $id);
         $this->db->where('deleted_at', NULL);
-        //$this->db->where('nip', $this->session->userdata('nip'));
+        $this->db->where('atasan', $this->session->userdata('nip'));
         $query = $this->db->get('uraian');
         if($query->num_rows() > 0){
             return $query->row();

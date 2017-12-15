@@ -21,10 +21,11 @@
 							<thead>
 								<tr>
 									<th width="5px"><input type="checkbox" id="check-all"></th>
-									<th>Kegiatan Tugas Jabatan</th>
-									<th>Kuantitas</th>
-									<th>Output</th>
-									<th>Waktu (Bulan)</th>
+									<th>NIP</th>
+									<th>Nama Lengkap</th>
+									<th>Jabatan</th>
+									<th>Periode</th>
+									<th>Status</th>
 									<th width="30px"></th>
 								</tr>
 							</thead>

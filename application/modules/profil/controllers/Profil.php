@@ -32,22 +32,26 @@ class Profil extends CI_Controller {
 		if($profil){
 			$profil_json = json_decode($profil);
 		}
-		
-		if($get_data->penilai){
-			$penilai_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->penilai;
-			$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
-			if($penilai){
-				$penilai_json = json_decode($penilai);
-			}
-		}
 
-		if($get_data->atasan){
-			$atasan_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->atasan;
-			$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
-			if($atasan){
-				$atasan_json = json_decode($atasan);
+
+		if($get_data){
+			if($get_data->penilai){
+				$penilai_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->penilai;
+				$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+				if($penilai){
+					$penilai_json = json_decode($penilai);
+				}
+			}
+	
+			if($get_data->atasan){
+				$atasan_url = 'http://localhost/pegawai/api/identitas?nip='.$get_data->atasan;
+				$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+				if($atasan){
+					$atasan_json = json_decode($atasan);
+				}
 			}
 		}
+		
 	
 		//var_dump($this->session->userdata('nip'));
 		

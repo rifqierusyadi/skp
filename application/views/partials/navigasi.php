@@ -30,14 +30,6 @@
                 </span>
           </a>
           </li>
-          <li>
-              <a href= "<?= site_url('pegawai');?>">
-              <i class="fa fa-users"></i> <span>Daftar Pegawai</span>
-              <span class="pull-right-container">
-                <span class="label label-primary pull-right"></span>
-              </span>
-              </a>
-          </li>
           <li class="treeview">
                     <a href="#">
                       <i class="fa fa-list"></i> <span>SKP & Prilaku Kerja</span>
@@ -47,12 +39,25 @@
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Adendum </a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
+                      <li><a href="<?= site_url('rencana/realisasi'); ?>"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
+                      <li><a href="<?= site_url('rencana/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
+                      <li><a href="<?= site_url('rencana/nilai'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
           </li>
-		
+          <li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-check-square-o"></i> <span>Penilaian Staf</span>
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Rencana </a></li>
+                      <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
+                      <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
+                      <li><a href="<?= site_url('penilai/nilai'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
+                  </ul>
+          </li>
           <li class="treeview">
                     <a href="#">
                       <i class="fa fa-folder"></i> <span>Laporan</span>
