@@ -485,6 +485,22 @@ if ( ! function_exists('uraian'))
 	}
 }
 
+if ( ! function_exists('detail_uraian'))
+{
+	function detail_uraian($id)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $id);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_detail');
+        if($query->num_rows() > 0){
+			return $query->result();
+		}else{
+            return FALSE;
+        }
+	}
+}
+
 if ( ! function_exists('status'))
 {
 	function status($nip, $tahun)

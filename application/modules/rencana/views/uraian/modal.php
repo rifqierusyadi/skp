@@ -37,7 +37,7 @@
         <div class="form-group <?php echo form_error('satuan') ? 'has-error' : null; ?>">
             <?php
             echo form_label('Satuan','satuan');
-            $data = array('class'=>'form-control','name'=>'satuan','id'=>'satuan','type'=>'text','value'=>set_value('satuan', $record->output), 'readonly'=>'readonly');
+            $data = array('class'=>'form-control','name'=>'satuan','id'=>'satuan','type'=>'text','value'=>set_value('satuan', $record->satuan), 'readonly'=>'readonly');
             echo form_input($data);
             echo form_error('satuan') ? form_error('satuan', '<p class="help-block">','</p>') : '';
             ?>

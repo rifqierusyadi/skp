@@ -15,6 +15,16 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
+						<div class="form-group <?php echo form_error('periode') ? 'has-error' : null; ?>">
+							<?php
+							echo form_label('Periode','periode');
+							$selected = set_value('periode', $record->periode);
+							echo form_dropdown('periode', $periode, $selected, "class='form-control select2' name='periode' id='periode'");
+							echo form_error('periode') ? form_error('periode', '<p class="help-block">','</p>') : '';
+							?>
+						</div>
+					</div>
+					<div class="col-md-12">
 						<div class="form-group <?php echo form_error('uraian') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Uraian Tugas','uraian');
@@ -35,12 +45,12 @@
 						</div>
 					</div>
 					<div class="col-md-12">
-						<div class="form-group <?php echo form_error('output') ? 'has-error' : null; ?>">
+						<div class="form-group <?php echo form_error('satuan') ? 'has-error' : null; ?>">
 							<?php
-							echo form_label('Output','output');
-							$data = array('class'=>'form-control','name'=>'output','id'=>'output','type'=>'text','value'=>set_value('output', $record->output));
+							echo form_label('Satuan','satuan');
+							$data = array('class'=>'form-control','name'=>'satuan','id'=>'satuan','type'=>'text','value'=>set_value('satuan', $record->satuan));
 							echo form_input($data);
-							echo form_error('output') ? form_error('output', '<p class="help-block">','</p>') : '';
+							echo form_error('satuan') ? form_error('satuan', '<p class="help-block">','</p>') : '';
 							?>
 						</div>
 					</div>

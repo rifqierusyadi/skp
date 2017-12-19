@@ -13,23 +13,38 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-						<a class="btn btn-sm btn-flat btn-success" onclick="add_data();" href="<?= site_url('rencana/uraian/created'); ?>"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
-						<button class="btn btn-sm btn-flat btn-danger" onclick="deleted_all();"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
-						<button class="btn btn-sm btn-flat btn-default" data-toggle="tooltip" title="Reload Data" data-placement="right" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i></button>
+						<a class="btn btn-sm btn-flat btn-success" href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
-						<table id="tableID" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+						<table id="tableIDX" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th width="5px"><input type="checkbox" id="check-all"></th>
 									<th>Kegiatan Tugas Jabatan</th>
 									<th>Kuantitas</th>
 									<th>Output</th>
 									<th>Waktu (Bulan)</th>
 									<th>Periode</th>
-									<th width="30px"></th>
 								</tr>
 							</thead>
 							<tbody>
+                <tr style="font-weight:bold">
+                  <td><?= $record->uraian; ?></td>
+                  <td class="text-right"><?= $record->kuantitas; ?></td>
+                  <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= uraian($record->id); ?></td>
+                  <td class="text-right"><?= $record->periode; ?></td>
+                </tr>
+                <?php $detail = detail_uraian($record->id); ?>
+                <?php if($detail): ?>
+                <?php foreach($detail as $row): ?>
+                <tr>
+                  <td><?= bulan($row->bulan); ?></td>
+                  <td class="text-right"><?= $row->kuantitas; ?></td>
+                  <td class="text-center"><?= $record->satuan; ?></td>
+                  <td><?= '' ?></td>
+                  <td class="text-right"><?= $record->periode; ?></td>
+                </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
 							</tbody>
 						</table>
 					</div>

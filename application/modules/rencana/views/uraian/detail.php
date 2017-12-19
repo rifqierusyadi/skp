@@ -16,7 +16,7 @@
 <?php foreach($detail as $row): ?>
     <tr>
         <td><?= bulan($row->bulan); ?></td>
-        <td><?= $row->output; ?></td>
+        <td><?= $row->kuantitas; ?></td>
         <td><?= $row->satuan; ?></td>
         <td><a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted_detail(<?= $row->id; ?>)"><i class="glyphicon glyphicon-trash"></i></a></td>
     </tr>

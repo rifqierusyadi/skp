@@ -43,12 +43,24 @@ class Uraian extends CI_Controller {
         $data['record']		= $this->data->get_data($id);
         $data['detail']		= $this->data->get_detail($id);
 		$this->load->view('uraian/detail', $data);
-	}
+    }
+    
+    public function detail_uraian($id=null)
+	{   
+        $data['head'] 		= 'Detail Uraian Tugas';
+		$data['record'] 	= $this->data->get($id);
+		$data['content'] 	= $this->folder.'uraian';
+		$data['style'] 		= $this->folder.'style';
+		$data['js'] 		= $this->folder.'js';
+		
+		$this->load->view('template', $data);
+    }
 	
 	public function created()
 	{
 		$data['head'] 		= 'Tambah Uraian Tugas';
-		$data['record'] 	= $this->data->get_new();
+        $data['record'] 	= $this->data->get_new();
+        $data['periode'] 	= $this->data->get_periode();
 		$data['content'] 	= $this->folder.'form';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';
@@ -59,7 +71,8 @@ class Uraian extends CI_Controller {
 	public function updated($id)
 	{
 		$data['head'] 		= 'Ubah Uraian Tugas';
-		$data['record'] 	= $this->data->get_id($id);
+        $data['record'] 	= $this->data->get_id($id);
+        $data['periode'] 	= $this->data->get_periode();
 		$data['content'] 	= $this->folder.'form';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';
@@ -79,11 +92,12 @@ class Uraian extends CI_Controller {
             $col[] = '<input type="checkbox" class="data-check" value="'.$row->id.'">';
             $col[] = $row->uraian;
             $col[] = $row->kuantitas;
-            $col[] = $row->output;
+            $col[] = $row->satuan;
             $col[] = '<button class="btn btn-flat btn-sm btn-block bg-gray disabled color-palette" data-toggle="modal" data-target="#detail-modal" data-id="'.$row->id.'" id="getDetail">'.uraian($row->id).' <i class="fa fa-file-text-o"></i></button>';
+            $col[] = $row->periode;
             
             //add html for action
-            $col[] = '<a class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#uraian-modal" data-id="'.$row->id.'" id="getUraian" title="Detail"><i class="glyphicon glyphicon-plus"></i></a> <a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('rencana/uraian/updated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+            $col[] = '<a class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#uraian-modal" data-id="'.$row->id.'" id="getUraian" title="Uraian"><i class="glyphicon glyphicon-plus"></i></a> <a class="btn btn-xs btn-flat btn-default" title="Detail" href="'.site_url('rencana/uraian/detail_uraian/').$row->id.'"><i class="glyphicon glyphicon-search"></i></a> <a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('rencana/uraian/updated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
                   <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted('."'".$row->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
  
             $data[] = $col;
@@ -103,10 +117,10 @@ class Uraian extends CI_Controller {
     {
         $data = array(
                 'nip' => $this->session->userdata('nip'),
-                'periode' => date('Y'),
+                'periode' => $this->input->post('periode'),
                 'uraian' => $this->input->post('uraian'),
                 'kuantitas' => $this->input->post('kuantitas'),
-                'output' => $this->input->post('output')
+                'satuan' => $this->input->post('satuan')
             );
         
         if($this->validation()){
@@ -119,10 +133,10 @@ class Uraian extends CI_Controller {
     {
         $data = array(
             'nip' => $this->session->userdata('nip'),
-            'periode' => date('Y'),
+            'periode' => $this->input->post('periode'),
             'uraian' => $this->input->post('uraian'),
             'kuantitas' => $this->input->post('kuantitas'),
-            'output' => $this->input->post('output')
+            'satuan' => $this->input->post('satuan')
         );
 		
         if($this->validation($id)){
@@ -171,11 +185,9 @@ class Uraian extends CI_Controller {
     {
         $data = array(
                 'uraian_id' => $this->input->post('uraian_id'),
-                'nip' => $this->session->userdata('nip'),
-                'periode' => date('Y'),
                 'bulan' => $this->input->post('bulan'),
                 'uraian' => $this->input->post('uraian'),
-                'output' => $this->input->post('output'),
+                'kuantitas' => $this->input->post('kuantitas'),
                 'satuan' => $this->input->post('satuan'),
                 'ak' => $this->input->post('ak'),
                 'biaya' => $this->input->post('biaya'),

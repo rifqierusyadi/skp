@@ -25,9 +25,9 @@ class Uraian_m extends MY_Model
         $record = new stdClass();
         $record->id = '';
         $record->uraian = '';
-        $record->output = '';
+        $record->satuan = '';
         $record->kuantitas = '';
-        $record->waktu = '';
+        $record->periode = '';
         return $record;
     }
 	
@@ -111,6 +111,18 @@ class Uraian_m extends MY_Model
         }else{
             return FALSE;
         }   
+    }
+
+    public function get_periode()
+    {
+        $now = date('Y');
+        $before = $now-2;
+        $tahun = $before;
+        $dropdown[''] = 'Pilih Periode Waktu';
+        for($tahun; $tahun <= $now; $tahun++ ){
+            $dropdown[$tahun] = $tahun;
+        }
+        return $dropdown; 
     }
 
     public function get_detail($id=null)
