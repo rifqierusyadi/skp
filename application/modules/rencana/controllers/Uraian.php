@@ -97,9 +97,16 @@ class Uraian extends CI_Controller {
             $col[] = $row->periode;
             
             //add html for action
-            $col[] = '<a class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#uraian-modal" data-id="'.$row->id.'" id="getUraian" title="Uraian"><i class="glyphicon glyphicon-plus"></i></a> <a class="btn btn-xs btn-flat btn-default" title="Detail" href="'.site_url('rencana/uraian/detail_uraian/').$row->id.'"><i class="glyphicon glyphicon-search"></i></a> <a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('rencana/uraian/updated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+            if(!$row->status){
+                $col[] = '<a class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#uraian-modal" data-id="'.$row->id.'" id="getUraian" title="Uraian"><i class="glyphicon glyphicon-plus"></i></a> <a class="btn btn-xs btn-flat btn-default" title="Detail" href="'.site_url('rencana/uraian/detail_uraian/').$row->id.'"><i class="glyphicon glyphicon-search"></i></a> <a class="btn btn-xs btn-flat btn-warning" onclick="edit_data();" href="'.site_url('rencana/uraian/updated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
                   <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted('."'".$row->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
- 
+            }elseif($row->status == 2){
+                $col[] = '<a class="btn btn-xs btn-flat btn-default" title="Detail" href="'.site_url('rencana/uraian/detail_uraian/').$row->id.'"><i class="glyphicon glyphicon-search"></i></a> <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted('."'".$row->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+
+            }else{
+                $col[] = '<a class="btn btn-xs btn-flat btn-default" title="Detail" href="'.site_url('rencana/uraian/detail_uraian/').$row->id.'"><i class="glyphicon glyphicon-search"></i></a> ';
+            }
+            
             $data[] = $col;
         }
  

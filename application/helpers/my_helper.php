@@ -521,3 +521,93 @@ if ( ! function_exists('status'))
 		}
 	}
 }
+
+if ( ! function_exists('real_kuantitas'))
+{
+	function real_kuantitas($uraian=null, $detail=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('detail_id', $detail);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_realisasi');
+        if($query->num_rows() > 0){
+			return $query->row()->kuantitas;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('real_biaya'))
+{
+	function real_biaya($uraian=null, $detail=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('detail_id', $detail);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_realisasi');
+        if($query->num_rows() > 0){
+			return $query->row()->biaya;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('real_nilai'))
+{
+	function real_nilai($uraian=null, $detail=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('detail_id', $detail);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_realisasi');
+        if($query->num_rows() > 0){
+			return $query->row()->nilai;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('status_nilai'))
+{
+	function status_nilai($nip=null, $detail=null, $uraian=null)
+	{
+		$CI =& get_instance();
+		$CI->db->select('a.id, b.nip, b.periode, b.status, a.uraian_id, b.uraian, a.bulan, a.kuantitas, a.satuan, a.ak, a.biaya, c.nilai, c.hasil, a.keterangan');
+        $CI->db->from('uraian_detail a');
+        $CI->db->join('uraian b','a.uraian_id = b.id','LEFT');
+		$CI->db->join('uraian_realisasi c','a.id = c.detail_id AND b.id = c.uraian_id','LEFT');
+		$CI->db->where('b.nip', $nip);
+		$CI->db->where('a.uraian_id', $uraian);
+		$CI->db->where('a.id', $detail);
+		$CI->db->where('a.deleted_at', NULL);
+		$query = $CI->db->get();
+        if($query->num_rows() > 0){
+			return $query->row()->hasil;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('get_profil'))
+{
+	function get_profil($nip=null)
+	{
+		$CI =& get_instance();
+		$profil_json = array();
+        
+		$profil_url = 'http://localhost/pegawai/api/identitas?nip='.$nip;
+		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
+		if($profil){
+			$profil_json = json_decode($profil);
+        }
+        
+        return $profil_json[0];
+	}
+}

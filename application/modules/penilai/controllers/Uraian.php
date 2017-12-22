@@ -30,27 +30,18 @@ class Uraian extends CI_Controller {
 		$this->load->view('template', $data);
     }
     
-    public function get_uraian()
-	{
-		$id = $this->input->post('id');
-		$data['record']		= $this->data->get_data($id);
-		$this->load->view('uraian/modal', $data);
-    }
-    
-    public function get_detail()
-	{
-        $nip = $this->uri->segment(3);
-        $tahun = $this->uri->segment(4);
-        
-        $data['head'] 		= 'Penilaian Uraian Tugas';
-        $data['record']		= $this->data->get_data($id);
-        $data['detail']		= $this->data->get_detail($id);
-		$data['content'] 	= $this->folder.'default';
+    public function detail($nip=null,$tahun=null)
+	{   
+        $data['head'] 		= 'Detail Uraian Tugas';
+        $data['record'] 	= $this->data->get_detail($nip, $tahun);
+        $data['nama'] 	    = $this->get_profil($nip)->nama;
+        $data['nip'] 	    = $nip;
+		$data['content'] 	= $this->folder.'uraian';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';
 		
 		$this->load->view('template', $data);
-	}
+    }
 	
 	public function ajax_list()
     {
@@ -64,14 +55,20 @@ class Uraian extends CI_Controller {
             $col[] = '<input type="checkbox" class="data-check" value="'.$row->id.'">';
             $col[] = $row->nip;
             $col[] = $this->get_profil($row->nip)->nama;
-            $col[] = $this->get_profil($row->nip)->jabatan;;
-            $col[] = date('Y');
-            $col[] = status($row->nip, date('Y'));
+            $col[] = $this->get_profil($row->nip)->jabatan;
+            $col[] = $this->get_profil($row->nip)->unker;
+            $col[] = $row->periode;
+            $col[] = '<a class="btn btn-default btn-xs btn-flat btn-block">'.status($row->nip, $row->periode).'</a>';
             
             //add html for action
-            $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('uraian/detail/'.$row->nip.'/'.date('Y')).'" target="_blank"><i class="glyphicon glyphicon-search"></i></a> <a class="btn btn-xs btn-flat btn-success" onclick="edit_data();" href="'.site_url('penilaian/uraian/updated/'.$row->id).'" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-check"></i></a>
-                  <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted('."'".$row->id."'".')"><i class="glyphicon glyphicon-minus"></i></a>';
- 
+            if( !$row->status){
+                $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('penilai/uraian/detail/'.$row->nip.'/'.date('Y')).'"><i class="fa fa-search"></i></a> <a class="btn btn-xs btn-flat btn-success" href="'.site_url('penilai/uraian/approved/'.$row->nip.'/'.$row->periode).'" data-toggle="tooltip" title="Approve"><i class="fa fa-check"></i></a>
+                <a class="btn btn-xs btn-flat btn-danger" href="'.site_url('penilai/uraian/rejected/'.$row->nip.'/'.$row->periode).'" data-toggle="tooltip" title="Reject"><i class="fa fa-times"></i></a>';
+            }else{
+                $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('penilai/uraian/detail/'.$row->nip.'/'.date('Y')).'"><i class="fa fa-search"></i></a>';
+
+            }
+           
             $data[] = $col;
         }
  
@@ -96,5 +93,19 @@ class Uraian extends CI_Controller {
         }
         
         return $profil_json[0];
+    }
+
+    public function approved($nip=null,$tahun=null){
+        $update = $this->db->update('uraian', array('status'=>'1','updated_at'=>date("Y-m-d H:i:s")), array('nip'=>$nip,'periode'=>$tahun));
+        if($update){
+            redirect('penilai/uraian');
+        }
+    }
+
+    public function rejected($nip=null,$tahun=null){
+        $update = $this->db->update('uraian', array('status'=>'2','updated_at'=>date("Y-m-d H:i:s")), array('nip'=>$nip,'periode'=>$tahun));
+        if($update){
+            redirect('penilai/uraian');
+        }
     }
 }

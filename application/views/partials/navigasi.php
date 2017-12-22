@@ -55,7 +55,7 @@
                       <li><a href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Rencana </a></li>
                       <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
                       <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
-                      <li><a href="<?= site_url('penilai/nilai'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
+                      <li><a href="<?= site_url('penilai/prilaku'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
           </li>
           <li class="treeview">
@@ -66,7 +66,7 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Rekap PNS </a></li>
+                      <li><a href=""><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
           </li>
           <li class="treeview">

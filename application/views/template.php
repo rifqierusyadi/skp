@@ -9,10 +9,10 @@
   <link rel="stylesheet" href= "<?= base_url('asset/plugins/font-awesome/css/font-awesome.min.css');?>" >
   <link rel="stylesheet" href= "<?= base_url('asset/plugins/Ionicons/css/ionicons.min.css'); ?>" >
 	<link rel="stylesheet" href= "<?= base_url('asset/plugins/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>" >
+  <link rel="stylesheet" href="<?= base_url('asset/plugins/select2/dist/css/select2.min.css'); ?>" />
   <link rel="stylesheet" href= "<?= base_url('asset/dist/css/AdminLTE.min.css'); ?>" >
   <link rel="stylesheet" href= "<?= base_url('asset/dist/css/skins/_all-skins.min.css'); ?>" >
-  <link rel="stylesheet" href="<?= base_url('asset/plugins/select2/dist/css/select2.min.css'); ?>" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

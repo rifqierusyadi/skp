@@ -1,5 +1,6 @@
 <script src="<?= base_url('asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'); ?>"></script>
 <script>
+$('.select2').select2();
 $('#tableIDX').DataTable({
       paging: true,
       lengthChange: false,
@@ -41,6 +42,7 @@ $(document).on('click', '#getUraian', function(e){
         $('#dynamic-content').html(''); // blank before load.
         $('#dynamic-content').html(data); // load here
         $('#modal-loader').hide(); // hide loader  
+        //$('.select2').select2();
         $('#keterangan').wysihtml5();
         //save_modal();
     })
@@ -68,6 +70,7 @@ $(document).on('click', '#getDetail', function(e){
         $('#detail-content').html(''); // blank before load.
         $('#detail-content').html(data); // load here
         $('#modal-loader').hide(); // hide loader  
+        //$('.select2').select2();
         $('#keterangan').wysihtml5();
         //save_modal();
     })
