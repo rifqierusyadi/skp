@@ -63,17 +63,17 @@
             ?>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class="form-group <?php echo form_error('keterangan') ? 'has-error' : null; ?>">
+    <!-- <div class="col-md-12">
+        <div class="form-group <?php // echo form_error('keterangan') ? 'has-error' : null; ?>">
             <?php
-            echo form_label('Keterangan','keterangan');
+            //echo form_label('Keterangan','keterangan');
             ?>
-            <textarea class='form-control' name='keterangan' id='keterangan'><?= set_value('keterangan'); ?></textarea>
+            <textarea class='form-control' name='keterangan' id='keterangan'><?php //echo set_value('keterangan'); ?></textarea>
             <?php
-            echo form_error('keterangan') ? form_error('keterangan', '<p class="help-block">','</p>') : '';
+            //echo form_error('keterangan') ? form_error('keterangan', '<p class="help-block">','</p>') : '';
             ?>
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- ./box-body -->
 <div class="box-footer">

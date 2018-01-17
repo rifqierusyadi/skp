@@ -28,6 +28,8 @@ class Uraian_m extends MY_Model
         $record->satuan = '';
         $record->kuantitas = '';
         $record->periode = '';
+        $record->ak = '';
+        $record->biaya = '';
         return $record;
     }
 	
@@ -116,7 +118,7 @@ class Uraian_m extends MY_Model
     public function get_periode()
     {
         $now = date('Y');
-        $before = $now-2;
+        $before = $now-1;
         $tahun = $before;
         $dropdown[''] = 'Pilih Periode Waktu';
         for($tahun; $tahun <= $now; $tahun++ ){
@@ -129,7 +131,7 @@ class Uraian_m extends MY_Model
     {
         $this->db->where('uraian_id', $id);
 		$this->db->where('deleted_at', NULL);
-        $this->db->order_by('bulan', 'ASC');
+        $this->db->order_by('bulan', 'asc');
         $query = $this->db->get('uraian_detail');
         if($query->num_rows() > 0){
             return $query->result();

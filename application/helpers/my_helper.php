@@ -539,6 +539,23 @@ if ( ! function_exists('real_kuantitas'))
 	}
 }
 
+if ( ! function_exists('real_ak'))
+{
+	function real_ak($uraian=null, $detail=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('detail_id', $detail);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_realisasi');
+        if($query->num_rows() > 0){
+			return $query->row()->ak;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
 if ( ! function_exists('real_biaya'))
 {
 	function real_biaya($uraian=null, $detail=null)
@@ -609,5 +626,33 @@ if ( ! function_exists('get_profil'))
         }
         
         return $profil_json[0];
+	}
+}
+
+if ( ! function_exists('cek_status'))
+{
+	function cek_status($id)
+	{
+		$CI =& get_instance();
+		$CI->db->where('id', $id);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian');
+        if($query->num_rows() > 0){
+			return $query->row()->status;
+		}
+	}
+}
+
+if ( ! function_exists('cek_target'))
+{
+	function cek_target($id)
+	{
+		$CI =& get_instance();
+		$CI->db->where('id', $id);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_detail');
+        if($query->num_rows() > 0){
+			return $query->row()->kuantitas;
+		}
 	}
 }

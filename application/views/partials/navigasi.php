@@ -39,9 +39,8 @@
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
-                      <li><a href="<?= site_url('rencana/realisasi'); ?>"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
+                      <li><a href="<?= site_url('rencana/realisasi'); ?>"><i class="fa fa-circle-o"></i> Realisasi Uraian Tugas </a></li>
                       <li><a href="<?= site_url('rencana/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
-                      <li><a href="<?= site_url('rencana/nilai'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
           </li>
           <li class="treeview">
@@ -53,9 +52,9 @@
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Rencana </a></li>
-                      <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Pengajuan Realisasi </a></li>
-                      <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
-                      <li><a href="<?= site_url('penilai/prilaku'); ?>"><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
+                      <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Nilai Realisasi Uraian Tugas </a></li>
+                      <li><a href="<?= site_url('penilai/tambahan'); ?>"><i class="fa fa-circle-o"></i> Nilai Realisasi Tugas Tambahan </a></li>
+                      <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Adendum </a></li>
                   </ul>
           </li>
           <li class="treeview">

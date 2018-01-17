@@ -13,7 +13,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-						<a class="btn btn-sm btn-flat btn-default" href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
+						<a class="btn btn-sm btn-flat btn-default" href="<?= site_url('rencana/adendum'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
 						<table id="tableIDX" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 							<thead>
@@ -23,6 +23,7 @@
 									<th>Output</th>
 									<th>Waktu (Bulan)</th>
 									<th>Periode</th>
+                  <th>Adendum</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -32,6 +33,7 @@
                   <td class="text-center"><?= $record->satuan; ?></td>
                   <td class="text-center"><?= uraian($record->id); ?></td>
                   <td class="text-right"><?= $record->periode; ?></td>
+                  <td class="text-right"></td>
                 </tr>
                 <?php $detail = detail_uraian($record->id); ?>
                 <?php if($detail): ?>
@@ -42,6 +44,7 @@
                   <td class="text-center"><?= $record->satuan; ?></td>
                   <td><?= '' ?></td>
                   <td class="text-right"><?= $record->periode; ?></td>
+                  <td class="text-center"><a href="<?php echo site_url('adendum/request/'.$row->id); ?>" class="btn btn-xs btn-flat btn-primary"><i class="fa fa-edit"></i> Adendum</a></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>

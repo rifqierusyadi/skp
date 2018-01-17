@@ -11,8 +11,6 @@
 			</div>
 			<!-- box-body -->
 			<div class="box-body">
-				<button class="btn btn-flat btn-success" data-toggle="modal" data-target="#tambahan-modal" id="getTambahan"><i class="fa fa-plus"></i> Realisasi Tugas Tambahan</button>
-				<br><br>
 				<div class="row text-muted well well-sm no-shadow panel" style="margin-left:1px; margin-right:1px;padding-bottom:25px;">
 					<div class="col-md-5">
 						<?php
@@ -88,27 +86,6 @@
            </div>             
            <!-- mysql data will be load here -->                          
            <div id="dynamic-content"></div>
-        </div>       
-    </div> 
-  </div>
-</div>
-
-<div id="tambahan-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog modal-lg"> 
-     <div class="modal-content">  
-        <div class="modal-header"> 
-           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-           <h4 class="modal-title">
-           <i class="fa fa-calendar-o"></i> Realisasi Tugas Tambahan
-           </h4> 
-        </div> 
-        <div class="modal-body">                     
-           <div id="tambahan-loader" style="display: none; text-align: center;">
-           <!-- ajax loader -->
-           <img src="<?= base_url('asset/ajax-loader.gif'); ?> ">
-           </div>             
-           <!-- mysql data will be load here -->                          
-           <div id="tambahan-content"></div>
         </div>       
     </div> 
   </div>

@@ -31,6 +31,8 @@
 									<th>Kuantitas</th>
 									<th>Output</th>
 									<th>Waktu (Bulan)</th>
+                  <th>Ak</th>
+                  <th>Biaya</th>
 									<th>Periode</th>
 								</tr>
 							</thead>
@@ -42,6 +44,8 @@
                       <td class="text-right"><?= $row->kuantitas; ?></td>
                       <td class="text-center"><?= $row->satuan; ?></td>
                       <td class="text-center"><?= uraian($row->id); ?></td>
+                      <td class="text-center"><?= $row->ak; ?></td>
+                      <td class="text-center"><?= $row->biaya; ?></td>
                       <td class="text-right"><?= $row->periode; ?></td>
                     </tr>
                     <?php $detail = detail_uraian($row->id); ?>
@@ -52,6 +56,8 @@
                       <td class="text-right"><?= $rox->kuantitas; ?></td>
                       <td class="text-center"><?= $row->satuan; ?></td>
                       <td class="text-center"><?= '-' ?></td>
+                      <td class="text-center"><?= $rox->ak; ?></td>
+                      <td class="text-center"><?= $rox->biaya; ?></td>
                       <td class="text-right"><?= $row->periode; ?></td>
                     </tr>
                     <?php endforeach; ?>

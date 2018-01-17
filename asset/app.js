@@ -12,9 +12,9 @@ table = $('#tableID').DataTable({
             data : {tokensys:key}
       },
       paging: true,
-      lengthChange: false,
+      lengthChange: true,
       searching: true,
-      ordering: true,
+      ordering: false,
       info: true,
       autoWidth: true,
       language: {

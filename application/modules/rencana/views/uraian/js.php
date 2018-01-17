@@ -82,16 +82,20 @@ $(document).on('click', '#getDetail', function(e){
 
 function save_modal()
 {   
-	var key = $("#key").text();
-	$.ajax({
+	//var key = $("#key").text();
+	
+    $.ajax({
         url : "<?= site_url('rencana/uraian/save_modal'); ?>",
         type: "POST",
         data: $('#formID').serialize(),
         dataType: "JSON",
         success: function(data)
         {
-            if(data.success == true){
-			  $('#message').append('<div class="alert alert-success">' +
+            if(data.success === true){
+					$('#uraian-modal').modal('hide');
+                    reload_table();
+
+                    $('#message').append('<div class="alert alert-success">' +
                     '<span class="glyphicon glyphicon-ok"></span>' +
                     ' Data berhasil disimpan.' +
                     '</div>');
@@ -107,18 +111,29 @@ function save_modal()
                         $(this).remove();
                         });
 					})
-					$('#uraian-modal').modal('hide');
-                    reload_table();
             }else{
-                $.each(data.messages, function(key, value) {
-                    var element = $('#' + key);
-                    element.closest('div.form-group')
-                    .removeClass('has-error')
-                    .addClass(value.length > 0 ? 'has-error' : 'has-success')
-                    .find('.text-danger')
-                    .remove();
-                    element.after(value);
-                });
+                $('#message').append('<div class="alert alert-danger">' +
+                    '<span class="glyphicon glyphicon-alert"></span>&nbsp;&nbsp;' +
+                    ' Ada Kesalahan Dalam Menyimpan, Periksa Kembali Bulan Yang Di Pilih Apakah Terduplikasi / Jumlah Output Tidak Boleh Kosong' +
+                    '</div>');
+
+                // tutup pesan
+                $('.alert-danger').delay(3000).show(10, function() {
+                        $(this).delay(1000).hide(10, function() {
+                        $(this).remove();
+                        });
+					})
+                    reload_table();
+                // $.each(data.messages, function(key, value) {
+                //     var element = $('#' + key);
+                //     element.closest('div.form-group')
+                //     .removeClass('has-error')
+                //     .addClass(value.length > 0 ? 'has-error' : 'has-success')
+                //     .find('.text-danger')
+                //     .remove();
+                //     element.after(value);
+                // });
+                //alert('Salah');
             }
         },
         error: function (jqXHR, textStatus, errorThrown)

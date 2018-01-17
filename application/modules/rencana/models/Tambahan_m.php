@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Realisasi_m extends MY_Model
+class Tambahan_m extends MY_Model
 {
 	public $table = 'uraian_detail'; // you MUST mention the table name
 	public $primary_key = 'id'; // you MUST mention the primary key

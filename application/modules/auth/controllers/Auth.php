@@ -33,11 +33,12 @@ class Auth extends CI_Controller {
 			$json = array();
 			//$url = 'http://localhost/pegawai/api/auth?email=admin@admin.com';
 			//$url = 'https://simpeg.kalselprov.go.id/api/auth?email='.$this->input->post('email');
-			$url = 'http://localhost/pegawai/api/auth?email='.$this->input->post('email');
+			//$url = 'https://simpeg.kalselprov.go.id/api/skp?email='.$this->input->post('email');
+			$url = 'http://localhost/simpeg3/api/skp?email='.$this->input->post('email');
 			$data = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 			if($data){
 				$json = json_decode($data);
-				$email_post = $json[0]->email;
+				$email_post = $json ? $json[0]->email : null;
 				$pass_post = $this->input->post('password');
 			}else{
 				$this->session->set_flashdata('flasherror','Email/Password Tidak Ditemukan');
@@ -78,7 +79,7 @@ class Auth extends CI_Controller {
 	private function _resolve_user_login($email_post, $pass_post, $json)
 	{
 		//$hash = str_replace('\\','',$json['password']);
-		$hash = $json[0]->password;
+		$hash = $json ? $json[0]->password : null;
 		return $this->_verify_password_hash($pass_post, $hash);
     }
     
