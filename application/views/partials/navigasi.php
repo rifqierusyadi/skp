@@ -41,6 +41,8 @@
                       <li><a href="<?= site_url('rencana/uraian'); ?>"><i class="fa fa-circle-o"></i> Rencana SKP </a></li>
                       <li><a href="<?= site_url('rencana/realisasi'); ?>"><i class="fa fa-circle-o"></i> Realisasi Uraian Tugas </a></li>
                       <li><a href="<?= site_url('rencana/adendum'); ?>"><i class="fa fa-circle-o"></i> Adendum </a></li>
+                      <li><a href="<?= site_url('rencana/cetak/formulir'); ?>" target="_blank"><i class="fa fa-circle-o"></i> Cetak Rencana SKP </a></li>
+                      <li><a href="<?= site_url('rencana/cetak/detail'); ?>" target="_blank"><i class="fa fa-circle-o"></i> Cetak Detail Rencana SKP </a></li>
                   </ul>
           </li>
           <li class="treeview">
@@ -57,7 +59,7 @@
                       <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Adendum </a></li>
                   </ul>
           </li>
-          <li class="treeview">
+          <!-- <li class="treeview">
                     <a href="#">
                       <i class="fa fa-folder"></i> <span>Laporan</span>
                       <span class="pull-right-container">
@@ -67,7 +69,7 @@
                     <ul class="treeview-menu">
                       <li><a href=""><i class="fa fa-circle-o"></i> Nilai Prestasi Kerja </a></li>
                   </ul>
-          </li>
+          </li> -->
           <li class="treeview">
                     <a href="#">
                       <i class="fa fa-book"></i> <span>Master</span>
@@ -89,7 +91,6 @@
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Manajemen Pengguna </a></li>
                       <li><a href="<?= site_url('setting/informasi'); ?>"><i class="fa fa-circle-o"></i> Manajemen Informasi </a></li>
                   </ul>
           </li>

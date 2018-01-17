@@ -32,7 +32,7 @@ class Adendum extends CI_Controller {
     
     public function detail($nip=null,$tahun=null)
 	{   
-        $data['head'] 		= 'Detail Uraian Tugas';
+        $data['head'] 		= 'Detail Adendum Uraian Tugas';
         $data['record'] 	= $this->data->get_detail($nip, $tahun);
         $data['nama'] 	    = $this->get_profil($nip)->nama;
         $data['nip'] 	    = $nip;
