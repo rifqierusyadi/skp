@@ -25,7 +25,7 @@
             <td><?= $row->biaya; ?></td>
             <td><?= real_biaya($row->uraian_id, $row->id) ? real_biaya($row->uraian_id, $row->id) : '-'; ?></td>
             <td><?= real_nilai($row->uraian_id, $row->id) ? real_nilai($row->uraian_id, $row->id) : '-'; ?></td>
-            <td></td>
+            <td><?= real_hasil($row->uraian_id, $row->id) ? real_hasil($row->uraian_id, $row->id) : '-'; ?></td>
             <td>
             <button class="btn btn-xs btn-primary btn-flat" data-toggle="modal" data-target="#uraian-modal" data-uraian="<?= $row->uraian_id; ?>" data-detail="<?= $row->id; ?>" id="getUraian"><i class="fa fa-plus"></i> </button>
             <button class="btn btn-xs btn-default btn-flat" data-uraian="<?= $row->uraian_id; ?>" data-detail="<?= $row->id; ?>" id="getReset"><i class="fa fa-refresh"></i> </button>

@@ -49,7 +49,7 @@ class Adendum extends CI_Controller {
 	{   
         $data['head'] 		= 'Detail Adendum Uraian Tugas';
 		$data['record'] 	= $this->data->get($id);
-		$data['content'] 	= $this->folder.'uraian';
+		$data['content'] 	= $this->folder.'adendum';
 		$data['style'] 		= $this->folder.'style';
 		$data['js'] 		= $this->folder.'js';
 		
@@ -91,9 +91,11 @@ class Adendum extends CI_Controller {
             $col = array();
             $col[] = '<input type="checkbox" class="data-check" value="'.$row->id.'">';
             $col[] = $row->uraian;
+            $col[] = '<button class="btn btn-flat btn-sm btn-block bg-gray disabled color-palette" data-toggle="modal" data-target="#detail-modal" data-id="'.$row->id.'" id="getDetail">'.uraian($row->id).' <i class="fa fa-file-text-o"></i></button>';
             $col[] = $row->kuantitas;
             $col[] = $row->satuan;
-            $col[] = '<button class="btn btn-flat btn-sm btn-block bg-gray disabled color-palette" data-toggle="modal" data-target="#detail-modal" data-id="'.$row->id.'" id="getDetail">'.uraian($row->id).' <i class="fa fa-file-text-o"></i></button>';
+            $col[] = $row->ak;
+            $col[] = $row->biaya;
             $col[] = $row->periode;
             
             //add html for action
@@ -125,9 +127,11 @@ class Adendum extends CI_Controller {
         $data = array(
                 'nip' => $this->session->userdata('nip'),
                 'periode' => $this->input->post('periode'),
-                'adendum' => $this->input->post('adendum'),
+                'uraian' => $this->input->post('uraian'),
                 'kuantitas' => $this->input->post('kuantitas'),
-                'satuan' => $this->input->post('satuan')
+                'satuan' => $this->input->post('satuan'),
+                'ak' => $this->input->post('ak'),
+                'biaya' => $this->input->post('biaya')
             );
         
         if($this->validation()){
@@ -141,9 +145,11 @@ class Adendum extends CI_Controller {
         $data = array(
             'nip' => $this->session->userdata('nip'),
             'periode' => $this->input->post('periode'),
-            'adendum' => $this->input->post('adendum'),
+            'uraian' => $this->input->post('uraian'),
             'kuantitas' => $this->input->post('kuantitas'),
-            'satuan' => $this->input->post('satuan')
+            'satuan' => $this->input->post('satuan'),
+            'ak' => $this->input->post('ak'),
+            'biaya' => $this->input->post('biaya')
         );
 		
         if($this->validation($id)){
@@ -191,9 +197,9 @@ class Adendum extends CI_Controller {
 	public function save_modal()
     {
         $data = array(
-                'adendum_id' => $this->input->post('adendum_id'),
+                'uraian_id' => $this->input->post('uraian_id'),
                 'bulan' => $this->input->post('bulan'),
-                'adendum' => $this->input->post('adendum'),
+                'uraian' => $this->input->post('uraian'),
                 'kuantitas' => $this->input->post('kuantitas'),
                 'satuan' => $this->input->post('satuan'),
                 'ak' => $this->input->post('ak'),
@@ -202,9 +208,19 @@ class Adendum extends CI_Controller {
                 'created_at' => date('Y-m-d H:i:s')
             );
 
-            $insert = $this->db->insert('uraian_detail', $data);
-            helper_log("add", "Menambah Detail Adendum Uraian Tugas");
-            echo json_encode(array("status" => TRUE));
+            //if($this->valid_modal()){
+                $find = $this->db->get_where('uraian_adendum',array('uraian_id'=>$this->input->post('uraian_id'), 'deleted_at'=>NULL, 'bulan'=>$this->input->post('bulan')))->row();
+                if($find){
+                    $update = $this->db->update('uraian_adendum', $data, array('uraian_id'=>$this->input->post('uraian_id'),'bulan'=>$this->input->post('bulan')));
+                    helper_log("edit", "Merubah Detail Adendum Uraian Tugas");
+                    echo json_encode(array("success" => TRUE));
+                }else{
+                    $insert = $this->db->insert('uraian_adendum', $data);
+                    helper_log("add", "Menambah Detail Adendum Uraian Tugas");
+                    echo json_encode(array("success" => TRUE));
+                }
+                
+            //}
     }
 
     public function delete_modal($id)
@@ -212,8 +228,43 @@ class Adendum extends CI_Controller {
         $data = array(
             'deleted_at' => date('Y-m-d H:i:s')
         );
-        $this->db->update('uraian_detail', $data, array('id'=>$id));
+        $this->db->update('uraian_adendum', $data, array('id'=>$id));
 		helper_log("trash", "Menghapus Detail Adendum Uraian Tugas");
         echo json_encode(array("status" => TRUE));
     }
+
+    private function valid_modal($id=null)
+    {
+        //$id = $this->input->post('id');
+		$data = array('success' => false, 'messages' => array());
+        
+        //$this->form_validation->set_rules("bulan", "Bulan Adendum Uraian Tugas", "trim|required|callback_cek_bulan");
+        $this->form_validation->set_rules("kuantitas", "Jumlah Output", "trim|required");
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+        
+        if($this->form_validation->run()){
+            $data['success'] = true;
+        }else{
+            foreach ($_POST as $key => $value) {
+                $data['messages'][$key] = form_error($key);
+            }
+        }
+        echo json_encode($data);
+        return $this->form_validation->run();
+    }
+
+    public function cek_bulan($str)
+    {
+        $find = $this->db->get_where('uraian_adendum',array('uraian_id'=>$this->input->post('uraian_id'), 'deleted_at'=>NULL, 'bulan'=>$str))->row();
+        if ($find)
+        {
+                $this->form_validation->set_message('cek_bulan', 'Adendum Uraian Tugas Untuk {field} Tersebut Sudah Ada.');
+                return FALSE;
+        }
+        else
+        {
+                return TRUE;
+        }
+    }
+
 }

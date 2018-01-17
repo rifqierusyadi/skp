@@ -15,16 +15,19 @@
 					<div class="col-md-12">
 						<button class="btn btn-sm btn-flat btn-default" data-toggle="tooltip" title="Reload Data" data-placement="right" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i></button>
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
-						<table id="tableID" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+						<p></p>
+						<table id="tableID" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
 									<th width="5px"><input type="checkbox" id="check-all"></th>
 									<th>Kegiatan Tugas Jabatan</th>
+									<th>Waktu (Bulan)</th>
 									<th>Kuantitas</th>
 									<th>Output</th>
-									<th>Waktu (Bulan)</th>
+									<th>Ak</th>
+									<th>Biaya</th>
 									<th>Periode</th>
-									<th width="30px"></th>
+									<th nowrap></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,7 +47,7 @@
         <div class="modal-header"> 
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
            <h4 class="modal-title">
-           <i class="fa fa-calendar-o"></i> Target Waktu SKP
+           <i class="fa fa-calendar-o"></i> Adendum Target SKP
            </h4> 
         </div> 
         <div class="modal-body">                     

@@ -1,7 +1,6 @@
 <table id="tableIDX" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
-        <th width="5px"><input type="checkbox" id="check-all"></th>
         <th>NIP</th>
         <th>Nama Lengkap</th>
         <th>Jabatan</th>
@@ -16,7 +15,6 @@
     <?php if($record): ?>
         <?php foreach($record as $row): ?>
         <tr>
-            <td></td>
             <td><?= $row->nip; ?></td>
             <td><?= get_profil($row->nip)->nama; ?></td>
             <td><?= get_profil($row->nip)->jabatan; ?></td>

@@ -590,6 +590,40 @@ if ( ! function_exists('real_nilai'))
 	}
 }
 
+if ( ! function_exists('real_hasil'))
+{
+	function real_hasil($uraian=null, $detail=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('detail_id', $detail);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_realisasi');
+        if($query->num_rows() > 0){
+			return $query->row()->hasil;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('adendum'))
+{
+	function adendum($uraian=null, $bulan=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('bulan', $bulan);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_adendum');
+        if($query->num_rows() > 0){
+			return $query->row()->kuantitas;
+		}else{
+			return FALSE;
+		}
+	}
+}
+
 if ( ! function_exists('status_nilai'))
 {
 	function status_nilai($nip=null, $detail=null, $uraian=null)

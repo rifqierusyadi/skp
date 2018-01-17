@@ -14,6 +14,8 @@
         <th>Kegiatan Tugas Jabatan</th>
         <th>Target<br>Kuantitas</th>
         <th>Realisasi<br>Kuantitas</th>
+        <th>Target<br>Ak</th>
+        <th>Realisasi<br>Ak</th>
         <th>Target<br>Biaya</th>
         <th>Realisasi<br>Biaya</th>
         <th>Pengajuan<br>Nilai</th>
@@ -27,6 +29,8 @@
             <td><?= $row->uraian; ?></td>
             <td><?= $row->kuantitas; ?></td>
             <td><?= real_kuantitas($row->uraian_id, $row->id); ?></td>
+            <td><?= $row->ak; ?></td>
+            <td><?= real_ak($row->uraian_id, $row->id); ?></td>
             <td><?= $row->kuantitas; ?></td>
             <td><?= real_biaya($row->uraian_id, $row->id); ?></td>
             <td><?= real_nilai($row->uraian_id, $row->id); ?></td>

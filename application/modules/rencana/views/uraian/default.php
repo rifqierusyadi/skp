@@ -16,6 +16,7 @@
 						<a class="btn btn-sm btn-flat btn-success" onclick="add_data();" href="<?= site_url('rencana/uraian/created'); ?>"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
 						<button class="btn btn-sm btn-flat btn-default" data-toggle="tooltip" title="Reload Data" data-placement="right" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i></button>
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
+						<p></p>
 						<table id="tableID" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>

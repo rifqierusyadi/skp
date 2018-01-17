@@ -15,25 +15,31 @@
 					<div class="col-md-12">
 						<a class="btn btn-sm btn-flat btn-default" href="<?= site_url('rencana/adendum'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
-						<table id="tableIDX" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+						<table id="tableIDX" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th>Kegiatan Tugas Jabatan</th>
-									<th>Kuantitas</th>
-									<th>Output</th>
-									<th>Waktu (Bulan)</th>
-									<th>Periode</th>
-                  <th>Adendum</th>
+                <th>Kegiatan Tugas Jabatan</th>
+                <th>Kuantitas</th>
+                <th>Adendum</th>
+                <th>Output</th>
+                <th>Ak</th>
+                <th>Biaya</th>
+                <th>Waktu (Bulan)</th>
+                <th>Periode</th>
+                <th></th>
 								</tr>
 							</thead>
 							<tbody>
                 <tr style="font-weight:bold">
                   <td><?= $record->uraian; ?></td>
                   <td class="text-right"><?= $record->kuantitas; ?></td>
+                  <td class="text-right"><?= ''; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= $record->ak; ?></td>
+                  <td class="text-right"><?= $record->biaya; ?></td>
                   <td class="text-center"><?= uraian($record->id); ?></td>
-                  <td class="text-right"><?= $record->periode; ?></td>
-                  <td class="text-right"></td>
+                  <td class="text-center"><?= $record->periode; ?></td>
+                  <td class="text-center">#</td>
                 </tr>
                 <?php $detail = detail_uraian($record->id); ?>
                 <?php if($detail): ?>
@@ -41,10 +47,23 @@
                 <tr>
                   <td><?= bulan($row->bulan); ?></td>
                   <td class="text-right"><?= $row->kuantitas; ?></td>
+                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan) : '-'; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= $row->ak; ?></td>
+                  <td class="text-right"><?= $row->biaya; ?></td>
                   <td><?= '' ?></td>
-                  <td class="text-right"><?= $record->periode; ?></td>
-                  <td class="text-center"><a href="<?php echo site_url('adendum/request/'.$row->id); ?>" class="btn btn-xs btn-flat btn-primary"><i class="fa fa-edit"></i> Adendum</a></td>
+                  <td class="text-center"><?= $record->periode; ?></td>
+                  <td class="text-center">
+                  <?php 
+                  $hasil = real_hasil($record->id, $row->id);
+                  if($hasil){
+                    echo '<a class="btn btn-xs btn-flat btn-default" title="Detail" href="#"><i class="fa fa-check"></i></a> ';
+                  }else{
+                    echo '<a class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#uraian-modal" data-id="'.$record->id.'" data-bulan="'.$row->bulan.'" id="getUraian" title="Uraian"><i class="glyphicon glyphicon-plus"></i></a> ';
+                  }
+                   
+                  ?>
+                  </td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>

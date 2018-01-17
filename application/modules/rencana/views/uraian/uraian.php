@@ -21,6 +21,8 @@
 									<th>Kegiatan Tugas Jabatan</th>
 									<th>Kuantitas</th>
 									<th>Output</th>
+                  <th>Ak</th>
+                  <th>Biaya</th>
 									<th>Waktu (Bulan)</th>
 									<th>Periode</th>
 								</tr>
@@ -30,6 +32,8 @@
                   <td><?= $record->uraian; ?></td>
                   <td class="text-right"><?= $record->kuantitas; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= $record->ak; ?></td>
+                  <td class="text-right"><?= $record->biaya; ?></td>
                   <td class="text-center"><?= uraian($record->id); ?></td>
                   <td class="text-right"><?= $record->periode; ?></td>
                 </tr>
@@ -40,7 +44,9 @@
                   <td><?= bulan($row->bulan); ?></td>
                   <td class="text-right"><?= $row->kuantitas; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
-                  <td><?= '' ?></td>
+                  <td class="text-right"><?= $row->ak; ?></td>
+                  <td class="text-right"><?= $row->biaya; ?></td>
+                  <td class="text-center"><?= '-' ?></td>
                   <td class="text-right"><?= $record->periode; ?></td>
                 </tr>
                 <?php endforeach; ?>

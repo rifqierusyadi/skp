@@ -150,7 +150,7 @@ class Realisasi extends CI_Controller {
 			$this->db->update_batch('uraian_realisasi', $result, 'detail_id');    
         
             helper_log("edit", "Menambah Nilai Hasil Detail Uraian Tugas");
-            echo json_encode(array("status" => TRUE));
+            echo json_encode(array("success" => TRUE));
     }
 
 }
