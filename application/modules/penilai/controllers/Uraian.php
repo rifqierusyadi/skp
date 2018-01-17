@@ -79,8 +79,8 @@ class Uraian extends CI_Controller {
     private function get_profil($id)
 	{
         $profil_json = array();
-        
-		$profil_url = 'http://localhost/pegawai/api/identitas?nip='.$id;
+        $profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$id;
+		//$profil_url = 'http://localhost/pegawai/api/identitas?nip='.$id;
 		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
 			$profil_json = json_decode($profil);

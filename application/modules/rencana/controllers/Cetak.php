@@ -45,8 +45,8 @@ class Cetak extends CI_Controller {
 		
 		$get_data = $this->db->get_where('pegawai', array('nip'=>$this->session->userdata('nip')))->row();
 		
-		//$profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
-		$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
+		$profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
+		//$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
 		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
 			$profil_json = json_decode($profil);
@@ -55,8 +55,8 @@ class Cetak extends CI_Controller {
 
 		if($get_data){
 			if($get_data->penilai){
-				//$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
-				$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
+				$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
+				//$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
 				$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($penilai){
 					$penilai_json = json_decode($penilai);
@@ -64,8 +64,8 @@ class Cetak extends CI_Controller {
 			}
 	
 			if($get_data->atasan){
-				//$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
-				$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
+				$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
+				//$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
 				$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($atasan){
 					$atasan_json = json_decode($atasan);
@@ -93,8 +93,8 @@ class Cetak extends CI_Controller {
 		
 		$get_data = $this->db->get_where('pegawai', array('nip'=>$this->session->userdata('nip')))->row();
 		
-		//$profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
-		$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
+		$profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
+		//$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
 		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
 			$profil_json = json_decode($profil);
@@ -103,8 +103,8 @@ class Cetak extends CI_Controller {
 
 		if($get_data){
 			if($get_data->penilai){
-				//$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
-				$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
+				$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
+				//$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
 				$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($penilai){
 					$penilai_json = json_decode($penilai);
@@ -112,8 +112,8 @@ class Cetak extends CI_Controller {
 			}
 	
 			if($get_data->atasan){
-				//$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
-				$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
+				$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
+				//$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
 				$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($atasan){
 					$atasan_json = json_decode($atasan);

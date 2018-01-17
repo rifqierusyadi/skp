@@ -23,6 +23,7 @@ class Cetak_m extends MY_Model
 
     public function get_uraian()
     {
+        $this->db->where('nip', $this->session->userdata('nip'));
         $this->db->where('deleted_at', NULL);
         $this->db->order_by('id','ASC');
         $query = $this->db->get('uraian');

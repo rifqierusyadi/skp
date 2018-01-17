@@ -55,7 +55,7 @@
                     <ul class="treeview-menu">
                       <li><a href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Rencana </a></li>
                       <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Nilai Realisasi Uraian Tugas </a></li>
-                      <li><a href="<?= site_url('penilai/tambahan'); ?>"><i class="fa fa-circle-o"></i> Nilai Realisasi Tugas Tambahan </a></li>
+                      <li><a href="<?= site_url('penilai/realisasi'); ?>"><i class="fa fa-circle-o"></i> Nilai Realisasi Tugas Tambahan </a></li>
                       <li><a href="<?= site_url('penilai/adendum'); ?>"><i class="fa fa-circle-o"></i> Persetujuan Adendum </a></li>
                   </ul>
           </li>

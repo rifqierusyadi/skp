@@ -22,8 +22,8 @@ class Atasan extends CI_Controller {
 	public function index()
 	{
 		$json = array();
-		//$url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
-		$url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
+		$url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$this->session->userdata('nip');
+		//$url = 'http://localhost/simpeg3/api/identitas?nip='.$this->session->userdata('nip');
 		$atasan = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($atasan){
 			$json = json_decode($atasan);
