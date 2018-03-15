@@ -5,8 +5,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?= base_url('asset/dist/css/print_fullpage.css'); ?>" />
+		<style>.select{border:1 solid #000;font-size:14px;margin-left:12px;}</style>
 	</head>
 <body>
+<br>
+<?php
+echo form_dropdown('periode', $periode, '', "class='select' name='periode' id='periode1'");
+?>
 <div class="book">
     <div class="page">
 	<div class="title">
@@ -66,6 +71,7 @@
 		</tr>
 	</table>
 	<br>
+	<div id="hasil">
 	<table class="print" id="tableID">
 		<thead>
 			<tr>
@@ -99,6 +105,7 @@
 			<?php endif; ?>
 		</tbody>
 	</table>
+	</div>
 	<br><br>
 	<table width="100%" style="text-align:center;">
 		<tr>
@@ -119,6 +126,25 @@
 	</div>
 </div>
 </div>
-<script src="<?= base_url('asset/plugins/jQuery/jquery-2.2.3.min.js'); ?>"></script>
+<script src="<?= base_url('asset/plugins/jquery/dist/jquery.min.js'); ?>"></script>
+<script>
+$("#periode1").change(function(){
+ var periode = $("#periode1").val();
+	if(periode){
+		$.ajax({
+				type: "POST",
+				async: false,
+				url : "<?php echo site_url('rencana/cetak/get_formulir')?>",
+				data: {
+				   'periode': periode,
+				   '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
+				},
+				success: function(msg){
+						$('#hasil').html(msg);
+				}
+		});
+	}
+});
+</script>
 </body>
 </html>

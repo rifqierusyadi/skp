@@ -59,6 +59,10 @@ body {
         page-break-after: always;
     }
 
+    .select{
+        display: none;
+    }
+
     #pencarian{
         display: none;
     }

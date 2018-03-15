@@ -487,7 +487,7 @@ if ( ! function_exists('uraian'))
 
 if ( ! function_exists('detail_uraian'))
 {
-	function detail_uraian($id)
+	function detail_uraian($id=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('uraian_id', $id);
@@ -503,14 +503,15 @@ if ( ! function_exists('detail_uraian'))
 
 if ( ! function_exists('detail_adendum'))
 {
-	function detail_adendum($id)
+	function detail_adendum($id=null, $bulan=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('uraian_id', $id);
+		$CI->db->where('bulan', $bulan);
 		$CI->db->where('deleted_at', null);
 		$query = $CI->db->get('uraian_adendum');
         if($query->num_rows() > 0){
-			return $query->result();
+			return $query->row();
 		}else{
             return FALSE;
         }
@@ -519,7 +520,7 @@ if ( ! function_exists('detail_adendum'))
 
 if ( ! function_exists('status'))
 {
-	function status($nip, $tahun)
+	function status($nip=null, $tahun=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('nip', $nip);
@@ -540,7 +541,7 @@ if ( ! function_exists('status'))
 
 if ( ! function_exists('status_adendum'))
 {
-	function status_adendum($nip, $tahun)
+	function status_adendum($nip=null, $tahun=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('nip', $nip);
@@ -719,7 +720,7 @@ if ( ! function_exists('get_profil'))
 
 if ( ! function_exists('cek_status'))
 {
-	function cek_status($id)
+	function cek_status($id=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('id', $id);
@@ -733,7 +734,7 @@ if ( ! function_exists('cek_status'))
 
 if ( ! function_exists('cek_target'))
 {
-	function cek_target($id)
+	function cek_target($id=null)
 	{
 		$CI =& get_instance();
 		$CI->db->where('id', $id);

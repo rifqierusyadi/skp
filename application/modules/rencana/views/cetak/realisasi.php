@@ -10,13 +10,17 @@
 <body>
 <br>
 <?php
-echo form_dropdown('periode', $periode, '', "class='select' name='periode' id='periode1'");
+echo form_dropdown('periode', $periode, '', "class='select' name='periode' id='periode'");
+?>
+<?php
+$bulan = array(''=>'Pilih Bulan','1'=>'Januari', '2'=>'Februari','3'=>'Maret','4'=>'April','5'=>'Mei','6'=>'Juni','7'=>'Juli','8'=>'Agustus','9'=>'September','10'=>'Oktober','11'=>'November','12'=>'Desember');
+echo form_dropdown('bulan', $bulan, '', "class='select' name='bulan' id='bulan'");
 ?>
 <div class="book">
     <div class="page">
 	<div class="title">
             <div class="logo"><img src="<?php echo base_url('asset/dist/img/kalsel-114.png'); ?>" width="36px"></div>
-            <div class="judul"><h3>FORMULIR SASARAN KERJA PEGAWAI NEGERI SIPIL<br>PEMERINTAH PROVINSI KALIMANTAN SELATAN</h3></div>
+            <div class="judul"><h3>REALISASI SASARAN KERJA PEGAWAI NEGERI SIPIL<br>PEMERINTAH PROVINSI KALIMANTAN SELATAN</h3></div>
     </div>
 	<!-- identitas -->
 	<div class="pencarian" id="pencarian">
@@ -72,53 +76,49 @@ echo form_dropdown('periode', $periode, '', "class='select' name='periode' id='p
 	</table>
 	<br>
 	<div id="hasil">
-	<table class="print" id="tableID">
-		<thead>
-			<tr>
-				<th rowSpan="2" width="3%">NO</th>
-				<th colSpan="2" rowSpan="2">III.KEGIATAN TUGAS JABATAN</th>
-				<th rowSpan="2">AK</th>
-				<th colspan="4">TARGET</th>
-			</tr>
-			<tr>
-				<th>OUTPUT</th>
-				<th>MUTU</th>
-				<th>WAKTU</th>
-				<th>BIAYA</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php if($record): ?>
-			<?php $i = 1; ?>
-			<?php foreach($record as $row): ?>
-			<tr>
-				<td><?= $i; ?></td>
-				<td colSpan="2"><?= $row->uraian; ?></td>
-				<td><?= $row->ak; ?></td>
-				<td><?= $row->kuantitas .' '.$row->satuan; ?></td>
-				<td><?= 100; ?></td>
-				<td><?= uraian($row->id).' Bulan'; ?></td>
-				<td><?= rupiah($row->biaya); ?></td>
-			</tr>
-			<?php $detail = detail_uraian($row->id); ?>
-                    <?php if($detail): ?>
-                    <?php foreach($detail as $rox): ?>
-                    <tr>
-                      <td></td>
-					  <td colSpan="2"><?= bulan($rox->bulan); ?></td>
-					  <td class="text-center"><?= $rox->ak; ?></td>
-                      <td class="text-right"><?= $rox->kuantitas.' '.$row->satuan; ?></td>
-                      <td class="text-center"><?= 100; ?></td>
-                      <td class="text-center"><?= '-' ?></td>
-                      <td class="text-center"><?= rupiah($rox->biaya); ?></td>
-                    </tr>
-			<?php endforeach; ?>
-			<?php endif; ?> 
-			<?php $i++; ?>
-			<?php endforeach; ?>
-			<?php endif; ?>
-		</tbody>
-	</table>
+		<table class="print" id="tableID">
+			<thead>
+				<tr>
+					<th rowSpan="2" width="3%">NO</th>
+					<th colSpan="2" rowSpan="2">III.KEGIATAN TUGAS JABATAN</th>
+					<th rowSpan="2">AK</th>
+					<th colspan="3">TARGET</th>
+					<th colspan="3">REALISASI</th>
+					<th rowSpan="2">NILAI</th>
+				</tr>
+				<tr>
+					<th>OUTPUT</th>
+					<th>MUTU</th>
+					<th>BIAYA</th>
+					<th>OUTPUT</th>
+					<th>MUTU</th>
+					<th>BIAYA</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if($record): ?>
+				<?php $i = 1; ?>
+				<?php foreach($record as $row): ?>
+				<tr>
+					<td><?= $i; ?></td>
+					<td colSpan="2"><?= $row->uraian; ?></td>
+					<td><?= $row->ak; ?></td>
+					<td><?= $row->kuantitas .' '.$row->satuan; ?></td>
+					<td><?= 100; ?></td>
+					<td><?= uraian($row->id).' Bulan'; ?></td>
+					<td><?= rupiah($row->biaya); ?></td>
+				</tr>
+				<?php $i++; ?>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="10">TOTAL NILAI</th>
+					<th></th>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
 	<br><br>
 	<table width="100%" style="text-align:center;">
@@ -142,20 +142,22 @@ echo form_dropdown('periode', $periode, '', "class='select' name='periode' id='p
 </div>
 <script src="<?= base_url('asset/plugins/jquery/dist/jquery.min.js'); ?>"></script>
 <script>
-$("#periode1").change(function(){
- var periode = $("#periode1").val();
+$("#bulan").change(function(){
+ var periode = $("#periode").val();
+ var bulan = $("#bulan").val();
 	if(periode){
 		$.ajax({
-				type: "POST",
-				async: false,
-				url : "<?php echo site_url('rencana/cetak/get_detail')?>",
-				data: {
-				   'periode': periode,
-				   '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
-				},
-				success: function(msg){
-						$('#hasil').html(msg);
-				}
+			type: "POST",
+			async: false,
+			url : "<?php echo site_url('rencana/cetak/get_realisasi')?>",
+			data: {
+				'periode': periode,
+				'bulan': bulan,
+				'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
+			},
+			success: function(msg){
+					$('#hasil').html(msg);
+			}
 		});
 	}
 });

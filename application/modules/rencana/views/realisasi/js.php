@@ -181,21 +181,21 @@ function save_tambahan()
                         });
 					})
 					$('#tambahan-modal').modal('hide');
-                    alert('On Progress om!');
-                    //reload_table();
-                    // $.ajax({
-                    //         type: "POST",
-                    //         async: false,
-                    //         url : "<?php //echo site_url('rencana/realisasi/get_detail')?>",
-                    //         data: {
-                    //         'bulan': bulan,
-                    //         'periode': periode,
-                    //         '<?php //echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
-                    //         },
-                    //         success: function(msg){
-                    //             $('#result').html(msg);
-                    //     }
-                    // });
+                    //alert('On Progress om!');
+                    reload_table();
+                    $.ajax({
+                            type: "POST",
+                            async: false,
+                            url : "<?php //echo site_url('rencana/realisasi/get_detail')?>",
+                            data: {
+                            'bulan': bulan,
+                            'periode': periode,
+                            '<?php //echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
+                            },
+                            success: function(msg){
+                                $('#result').html(msg);
+                        }
+                    });
                     
             }else{
                 $.each(data.messages, function(key, value) {
@@ -223,12 +223,12 @@ function save_tambahan()
 //     var uraian = $(this).data('uraian'); // get id of clicked row
 //     var detail = $(this).data('detail'); // get id of clicked row
 //     $.ajax({
-//         url : "<?= site_url('rencana/realisasi/reset_realisasi'); ?>",
+//         url : "<?php //site_url('rencana/realisasi/reset_realisasi'); ?>",
 //         type: "POST",
 //         data: {
 //             'detail': detail,
 //             'uraian': uraian,
-//             '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
+//             '<?php //echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
 //         },
 //         dataType: "JSON",
 //         success: function(data)
@@ -281,12 +281,12 @@ function save_tambahan()
 //         var detail = $(this).data('detail'); // get id of clicked row
 
 // 	  	$.ajax({
-//             url : "<?= site_url('rencana/realisasi/reset_realisasi'); ?>",
+//             url : "<?php // site_url('rencana/realisasi/reset_realisasi'); ?>",
 //             type: "POST",
 //             data: {
 //                 'detail': detail,
 //                 'uraian': uraian,
-//                 '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
+//                 '<?php //echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
 //             },
 //             dataType: "JSON",
 //             success: function(data)

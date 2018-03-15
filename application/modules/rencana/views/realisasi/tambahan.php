@@ -1,3 +1,8 @@
+<form id="formID" role="form" action="" method="post">
+<?php
+echo form_dropdown('periode', $periode, '', "class='form-control select2' name='periode' id='periode'");
+?>
+<br>
 <table id="tableIDX" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -44,6 +49,18 @@
             <td></td>
         </tr>
         <tr>
+            <td>
+            <?php
+            echo form_label('Keterangan','keterangan1');
+            ?>
+            <textarea class='form-control' name='keterangan1' id='keterangan1'><?php echo set_value('keterangan1'); ?></textarea>
+            <?php
+            echo form_error('keterangan1') ? form_error('keterangan1', '<p class="help-block">','</p>') : '';
+            ?>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
             <td><b>Kreativitas</b></td>
             <td></td>
         </tr>
@@ -80,10 +97,21 @@
             </td>
             <td></td>
         </tr>
+        <tr>
+            <td>
+            <?php
+            echo form_label('Keterangan Kreativitas','keterangan2');
+            ?>
+            <textarea class='form-control' name='keterangan2' id='keterangan2'><?php echo set_value('keterangan2'); ?></textarea>
+            <?php
+            echo form_error('keterangan2') ? form_error('keterangan2', '<p class="help-block">','</p>') : '';
+            ?>
+            </td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
 <div class="box-footer">
-    <form id="formID" role="form" action="" method="post">
     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
     <input type="hidden" name="uraian" value="<?= $uraian; ?>" />
     <input type="hidden" name="detail" value="<?= $detail; ?>" />
@@ -91,5 +119,5 @@
     <input type="hidden" name="nilaikreativitas" id="nilaiHidden_2" value="0">
     <button type="button" class="btn btn-sm btn-flat btn-success" onclick="save_tambahan()" data-dismiss="modal"><i class="fa fa-save"></i> Simpan</button>
     <button type="button" class="btn btn-sm btn-flat btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Keluar</button>
-    </form>
 </div>
+</form>

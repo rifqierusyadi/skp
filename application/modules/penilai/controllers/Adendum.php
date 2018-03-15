@@ -89,10 +89,26 @@ class Adendum extends CI_Controller {
         return $profil_json[0];
     }
 
-    public function approved($nip=null,$tahun=null){
-        $update = $this->db->update('uraian', array('status'=>'1','updated_at'=>date("Y-m-d H:i:s")), array('nip'=>$nip,'periode'=>$tahun));
+    public function approved($id=null,$bulan=null){
+        $data = array();
+        $find = $this->db->get_where('uraian_adendum', array('uraian_id'=> $id, 'bulan'=>$bulan))->row();
+        
+        if($find){
+            $data['uraian_id'] = $find->uraian_id;
+            $data['bulan'] = $find->bulan;
+            $data['uraian'] = $find->uraian;
+            $data['kuantitas'] = $find->kuantitas;
+            $data['satuan'] = $find->satuan;
+            $data['ak'] = $find->ak;
+            $data['biaya'] = $find->biaya;
+            $update = $this->db->update('uraian_detail', $data, array('uraian_id'=>$id,'bulan'=>$bulan));
+            $this->db->update('uraian_adendum', array('status'=>1),array('uraian_id'=>$id,'bulan'=>$bulan));
+        }
+
         if($update){
-            redirect('penilai/uraian');
+            redirect('penilai/adendum');
+        }else{
+            $this->index();
         }
     }
 

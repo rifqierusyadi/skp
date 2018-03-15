@@ -58,22 +58,28 @@
                       <td class="text-right"><?= $row->periode; ?></td>
                       <td></td>
                     </tr>
-                    <?php $detail = detail_adendum($row->id); ?>
+                    <?php $detail = detail_uraian($row->id); ?>
                     <?php if($detail): ?>
                     <?php foreach($detail as $rox): ?>
                     <tr>
                       <td><?= bulan($rox->bulan); ?></td>
                       <td class="text-right"><?= $rox->kuantitas; ?></td>
-                      <td class="text-right"><?= $rox->kuantitas; ?></td>
-                      <td class="text-center"><?= $row->satuan; ?></td>
-                      <td class="text-center"><?= $row->satuan; ?></td>
-                      <td class="text-center"><?= $row->ak; ?></td>
-                      <td class="text-center"><?= $row->ak; ?></td>
-                      <td class="text-center"><?= $row->biaya; ?></td>
-                      <td class="text-center"><?= $row->biaya; ?></td>
+                      <td class="text-right"><?= detail_adendum($rox->uraian_id, $rox->bulan) ? detail_adendum($rox->uraian_id, $rox->bulan)->kuantitas : '-'; ?></td>
+                      <td class="text-center"><?= $rox->satuan; ?></td>
+                      <td class="text-center"><?= detail_adendum($rox->uraian_id, $rox->bulan) ? detail_adendum($rox->uraian_id, $rox->bulan)->satuan : '-'; ?></td>
+                      <td class="text-center"><?= $rox->ak; ?></td>
+                      <td class="text-center"><?= detail_adendum($rox->uraian_id, $rox->bulan) ? detail_adendum($rox->uraian_id, $rox->bulan)->ak : '-'; ?></td>
+                      <td class="text-center"><?= $rox->biaya; ?></td>
+                      <td class="text-center"><?= detail_adendum($rox->uraian_id, $rox->bulan) ? detail_adendum($rox->uraian_id, $rox->bulan)->biaya : '-'; ?></td>
                       <td class="text-center"><?= '-' ?></td>
                       <td class="text-right"><?= $row->periode; ?></td>
-                      <td><a href="<?= site_url('penilai/adendum/approve/'.$row->id) ?>" class="btn btn-xs btn-flat btn-success"><i class="fa fa-check"></i></a></td>
+                      <td>
+                      <?php if(detail_adendum($rox->uraian_id, $rox->bulan) && detail_adendum($rox->uraian_id, $rox->bulan)->status == 0 ){ ?>
+                      <a href="<?= site_url('penilai/adendum/approved/'.$rox->uraian_id.'/'.$rox->bulan); ?>" class="btn btn-xs btn-flat btn-success"><i class="fa fa-check"></i></a>
+                      <?php }else{ ?>
+                        -
+                      <?php } ?>
+                      </td>
                     </tr>
                     <?php endforeach; ?>
                     <?php endif; ?> 

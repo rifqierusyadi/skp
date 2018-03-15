@@ -72,6 +72,7 @@ class Realisasi extends CI_Controller {
         $data['record']	 = $this->data->get_data($uraian);
         $data['uraian']  = $uraian;
         $data['detail']  = $detail;
+        $data['periode'] 	= $this->data->get_periode();
 		$this->load->view('realisasi/tambahan', $data);
     }
 	
@@ -212,8 +213,27 @@ class Realisasi extends CI_Controller {
 
     public function save_tambahan()
     {
-            
-        echo json_encode(array("success" => TRUE));
+        $data = array(
+            'nip' => $this->session->userdata('nip'),
+            'periode' => $this->input->post('periode'),
+            'tambahan' => $this->input->post('nilaitambahan'),
+            'kreativitas' => $this->input->post('nilaikreativitas'),
+            'keterangan1' => $this->input->post('keterangan1'),
+            'keterangan2' => $this->input->post('keterangan2'),
+        );
+
+        $find = $this->db->get_where('uraian_tambahan',array('nip'=>$this->session->userdata('nip'),'periode'=>$this->input->post('periode')))->row();
+        
+        if($find){
+            $update = $this->db->update('uraian_tambahan', $data, array('nip'=>$this->session->userdata('nip'),'periode'=>$this->input->post('periode')));
+            helper_log("edit", "Merubah Tugas Tambahan");
+            echo json_encode(array("success" => TRUE));
+        }else{
+            //var_dump('Hallo');
+            $insert = $this->db->insert('uraian_tambahan', $data);
+            helper_log("add", "Menambah Realisasi Tugas Tambahan");
+            echo json_encode(array("success" => TRUE));
+        }    
             
     }
 
