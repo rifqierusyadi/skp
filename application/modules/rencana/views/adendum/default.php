@@ -23,7 +23,7 @@
 									<th>Kegiatan Tugas Jabatan</th>
 									<th>Waktu (Bulan)</th>
 									<th>Kuantitas</th>
-									<th>Output</th>
+									<th>Satuan</th>
 									<th>Ak</th>
 									<th>Biaya</th>
 									<th>Periode</th>

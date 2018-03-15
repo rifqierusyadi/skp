@@ -131,7 +131,7 @@ class Uraian extends CI_Controller {
                 'kuantitas' => $this->input->post('kuantitas'),
                 'satuan' => $this->input->post('satuan'),
                 'ak' => $this->input->post('ak'),
-                'biaya' => $this->input->post('biaya')
+                'biaya' => replacecoma($this->input->post('biaya'))
             );
         
         if($this->validation()){
@@ -149,7 +149,7 @@ class Uraian extends CI_Controller {
             'kuantitas' => $this->input->post('kuantitas'),
             'satuan' => $this->input->post('satuan'),
             'ak' => $this->input->post('ak'),
-            'biaya' => $this->input->post('biaya')
+            'biaya' => replacecoma($this->input->post('biaya'))
         );
 		
         if($this->validation($id)){

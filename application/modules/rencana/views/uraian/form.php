@@ -57,7 +57,7 @@
 					<div class="col-md-12">
 						<div class="form-group <?php echo form_error('ak') ? 'has-error' : null; ?>">
 							<?php
-							echo form_label('Acuan Angka Kredit','ak');
+							echo form_label('Acuan AK','ak');
 							$data = array('class'=>'form-control','name'=>'ak','id'=>'ak','type'=>'text','value'=>set_value('ak', $record->ak));
 							echo form_input($data);
 							echo form_error('ak') ? form_error('ak', '<p class="help-block">','</p>') : '';
@@ -70,7 +70,7 @@
 							echo form_label('Biaya','biaya');
 							$data = array('class'=>'form-control','name'=>'biaya','id'=>'biaya','type'=>'text','value'=>set_value('biaya', $record->biaya));
 							echo form_input($data);
-							echo form_error('biaya') ? form_error('biaya', '<p class="help-block">','</p>') : '';
+							echo form_error('biaya') ? form_error('biaya', '<p class="help-block">','</p>') : 'Untuk Jabatan PPTK dan PA Wajib Untuk Memasukan Biaya';
 							?>
 						</div>
 					</div>

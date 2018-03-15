@@ -501,6 +501,22 @@ if ( ! function_exists('detail_uraian'))
 	}
 }
 
+if ( ! function_exists('detail_adendum'))
+{
+	function detail_adendum($id)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $id);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_adendum');
+        if($query->num_rows() > 0){
+			return $query->result();
+		}else{
+            return FALSE;
+        }
+	}
+}
+
 if ( ! function_exists('status'))
 {
 	function status($nip, $tahun)
@@ -511,13 +527,34 @@ if ( ! function_exists('status'))
 		$CI->db->where('deleted_at', null);
 		$query = $CI->db->get('uraian');
         if($query->row()->status == 0){
-			return 'Belum Di Proses';
+			return '<p class="text-yellow">BELUM DI PROSES</p>';
 		}elseif($query->row()->status == 1){
-			return 'Setuju';
+			return '<p class="text-green">DI SETUJUI</p>';
 		}elseif($query->row()->status == 2){
-			return 'Di Tolak';
+			return '<p class="text-red">DI TOLAK</p>';
 		}else{
-			return 'Belum Membuat';
+			return '<p class="text-muted">BELUM MEMBUAT</p>';
+		}
+	}
+}
+
+if ( ! function_exists('status_adendum'))
+{
+	function status_adendum($nip, $tahun)
+	{
+		$CI =& get_instance();
+		$CI->db->where('nip', $nip);
+		$CI->db->where('periode', $tahun);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian');
+        if($query->row()->status == 0){
+			return '<p class="text-yellow">BELUM DI PROSES</p>';
+		}elseif($query->row()->status == 1){
+			return '<p class="text-green">DI SETUJUI</p>';
+		}elseif($query->row()->status == 2){
+			return '<p class="text-red">DI TOLAK</p>';
+		}else{
+			return '<p class="text-muted">BELUM MEMBUAT</p>';
 		}
 	}
 }
@@ -617,7 +654,24 @@ if ( ! function_exists('adendum'))
 		$CI->db->where('deleted_at', null);
 		$query = $CI->db->get('uraian_adendum');
         if($query->num_rows() > 0){
-			return $query->row()->kuantitas;
+			return $query->row();
+		}else{
+			return FALSE;
+		}
+	}
+}
+
+if ( ! function_exists('adendum_status'))
+{
+	function adendum_status($uraian=null, $bulan=null)
+	{
+		$CI =& get_instance();
+		$CI->db->where('uraian_id', $uraian);
+		$CI->db->where('bulan', $bulan);
+		$CI->db->where('deleted_at', null);
+		$query = $CI->db->get('uraian_adendum');
+        if($query->num_rows() > 0){
+			return $query->row()->status;
 		}else{
 			return FALSE;
 		}
@@ -653,7 +707,7 @@ if ( ! function_exists('get_profil'))
 		$CI =& get_instance();
 		$profil_json = array();
         
-		$profil_url = 'http://localhost/pegawai/api/identitas?nip='.$nip;
+		$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$nip;
 		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
 			$profil_json = json_decode($profil);

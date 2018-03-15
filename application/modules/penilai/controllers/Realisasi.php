@@ -21,7 +21,7 @@ class Realisasi extends CI_Controller {
 	//halaman index
 	public function index()
 	{
-		$data['head'] 		= 'Penilaian Uraian Tugas';
+		$data['head'] 		= 'Penilaian Realisasi Uraian Tugas';
 		$data['record'] 	= $this->data->get_all();
         $data['content'] 	= $this->folder.'default';
         $data['bulan'] 	    = $this->data->get_bulan();
@@ -50,6 +50,8 @@ class Realisasi extends CI_Controller {
         $data['nip']        = $this->input->post('nip');
         $data['nama']       = $this->get_profil($this->input->post('nip'))->nama;
         $data['record']		= $this->data->get_uraian($nip, $bulan, $periode);
+        $data['bulan']      = bulan($bulan);
+        $data['periode']    = $periode;
         $this->load->view('realisasi/modal', $data);
     }
     

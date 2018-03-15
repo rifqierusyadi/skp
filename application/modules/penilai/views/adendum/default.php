@@ -23,7 +23,6 @@
 									<th>Jabatan</th>
                   <th>Unit Kerja</th>
 									<th>Periode</th>
-									<th>Status</th>
 									<th width="80px"></th>
 								</tr>
 							</thead>

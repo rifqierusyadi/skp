@@ -34,10 +34,12 @@ class Adendum_m extends MY_Model
 	//urusan lawan datatable
     private function _get_datatables_query()
     {
-        $this->db->select('a.*, b.penilai');
+        $this->db->select('a.*, b.penilai, c.status');
         $this->db->from('uraian a');
         $this->db->join('pegawai b','a.nip = b.nip','LEFT');
+        $this->db->join('uraian_adendum c','c.uraian_id =a.id','LEFT');
         $this->db->where('b.penilai', $this->session->userdata('nip'));
+        $this->db->where('c.satus', NULL);
         $this->db->group_by('a.nip');
         $this->db->group_by('a.periode');
         $this->db->group_by('a.status');

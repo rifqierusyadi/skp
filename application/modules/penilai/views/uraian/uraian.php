@@ -13,7 +13,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-            <a class="btn btn-sm btn-flat btn-default" href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
+            <a class="btn btn-sm btn-flat btn-default" href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-arrow-left"></i> Kembali Ke Pengajuan Rencana</a>
             
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
             <br><br>

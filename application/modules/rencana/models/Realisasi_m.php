@@ -113,6 +113,19 @@ class Realisasi_m extends MY_Model
         }   
     }
 
+    public function get_data_periode($id=null)
+    {
+        $this->db->where('id', $id);
+        $this->db->where('deleted_at', NULL);
+        //$this->db->where('nip', $this->session->userdata('nip'));
+        $query = $this->db->get('uraian_detail');
+        if($query->num_rows() > 0){
+            return $query->row();
+        }else{
+            return FALSE;
+        }   
+    }
+
     public function get_periode()
     {
         $now = date('Y');
@@ -142,7 +155,8 @@ class Realisasi_m extends MY_Model
         $this->db->where('b.nip', $nip);
         $this->db->where('a.bulan', $bulan);
         $this->db->where('b.periode', $periode);
-		$this->db->where('a.deleted_at', NULL);
+        $this->db->where('a.deleted_at', NULL);
+        $this->db->where('b.status', 1);
         $query = $this->db->get();
         if($query->num_rows() > 0){
             return $query->result();

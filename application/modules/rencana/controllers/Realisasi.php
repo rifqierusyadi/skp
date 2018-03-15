@@ -38,6 +38,7 @@ class Realisasi extends CI_Controller {
         $bulan = $this->input->post('bulan');
         $periode = $this->input->post('periode');
         $data['record']		= $this->data->get_detail($nip, $bulan, $periode);
+        $data['nip']        = $nip;
         $this->load->view('realisasi/detail', $data);
     }
     
@@ -57,6 +58,7 @@ class Realisasi extends CI_Controller {
         $uraian = $this->input->post('uraian');
         $detail = $this->input->post('detail');
         $data['record']	 = $this->data->get_data($uraian);
+        $data['periode'] = $this->data->get_data_periode($detail);
         $data['uraian']  = $uraian;
         $data['detail']  = $detail;
 		$this->load->view('realisasi/modal', $data);
@@ -188,7 +190,7 @@ class Realisasi extends CI_Controller {
                 'detail_id' => $this->input->post('detail'),
                 'kuantitas' => $this->input->post('kuantitas'),
                 'ak' => $this->input->post('ak'),
-                'biaya' => $this->input->post('biaya'),
+                'biaya' => replacecoma($this->input->post('biaya')),
                 'nilai' => $this->input->post('nilai'),
                 'keterangan' => $this->input->post('keterangan')
             );

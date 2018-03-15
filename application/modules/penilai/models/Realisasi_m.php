@@ -121,14 +121,16 @@ class Realisasi_m extends MY_Model
 
     public function get_detail($bulan=null, $periode=null)
     {
-        $this->db->select('a.id, a.uraian_id, b.nip, b.periode, b.status, a.uraian_id, b.uraian, a.bulan, a.kuantitas, a.satuan, a.ak, a.biaya, a.keterangan');
+        $this->db->select('a.id, a.uraian_id, b.nip, b.periode, b.status, a.uraian_id, b.uraian, a.bulan, a.kuantitas, a.satuan, a.ak, a.biaya, a.keterangan, d.id as realisasi');
         $this->db->from('uraian_detail a');
         $this->db->join('uraian b','a.uraian_id = b.id','LEFT');
         $this->db->join('pegawai c','b.nip = c.nip','LEFT');
+        $this->db->join('uraian_realisasi d','d.uraian_id = b.id AND d.detail_id = a.id','LEFT');
         $this->db->where('c.penilai', $this->session->userdata('nip'));
         $this->db->where('a.bulan', $bulan);
         $this->db->where('b.periode', $periode);
         $this->db->where('a.deleted_at', NULL);
+        $this->db->where('d.id !=', NULL);
         $this->db->group_by('b.nip');
         $query = $this->db->get();
         if($query->num_rows() > 0){
@@ -140,9 +142,10 @@ class Realisasi_m extends MY_Model
 
     public function get_uraian($nip=null, $bulan=null, $periode=null)
     {
-        $this->db->select('a.id, b.nip, b.periode, b.status, a.uraian_id, b.uraian, a.bulan, a.kuantitas, a.satuan, a.ak, a.biaya, a.keterangan');
+        $this->db->select('a.id, b.nip, b.periode, b.status, a.uraian_id, b.uraian, a.bulan, a.kuantitas, a.satuan, a.ak, a.biaya, a.keterangan, c.hasil');
         $this->db->from('uraian_detail a');
         $this->db->join('uraian b','a.uraian_id = b.id','LEFT');
+        $this->db->join('uraian_realisasi c','c.uraian_id = b.id AND c.detail_id = a.id','LEFT');
         $this->db->where('b.nip', $nip);
         $this->db->where('a.bulan', $bulan);
         $this->db->where('b.periode', $periode);

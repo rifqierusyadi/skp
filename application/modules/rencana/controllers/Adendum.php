@@ -95,7 +95,7 @@ class Adendum extends CI_Controller {
             $col[] = $row->kuantitas;
             $col[] = $row->satuan;
             $col[] = $row->ak;
-            $col[] = $row->biaya;
+            $col[] = rupiah($row->biaya);
             $col[] = $row->periode;
             
             //add html for action
@@ -205,6 +205,7 @@ class Adendum extends CI_Controller {
                 'ak' => $this->input->post('ak'),
                 'biaya' => $this->input->post('biaya'),
                 'keterangan' => $this->input->post('keterangan'),
+                'status' =>0,
                 'created_at' => date('Y-m-d H:i:s')
             );
 

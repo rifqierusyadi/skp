@@ -13,7 +13,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-12">
-            <a class="btn btn-sm btn-flat btn-default" href="<?= site_url('penilai/uraian'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
+            <a class="btn btn-sm btn-flat btn-default" href="<?= site_url('penilai/prilaku'); ?>"><i class="fa fa-arrow-left"></i> Kembali</a>
             
 						<span id="key" style="display: none;"><?= $this->security->get_csrf_hash(); ?></span>
             <br><br>
@@ -33,7 +33,7 @@
 						<div class="form-group <?php echo form_error('pelayanan') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Orientasi Pelayanan','pelayanan');
-							$data = array('class'=>'form-control','name'=>'pelayanan','id'=>'pelayanan','type'=>'text','value'=>set_value('pelayanan'));
+							$data = array('class'=>'form-control','name'=>'pelayanan','id'=>'pelayanan','type'=>'text','value'=>set_value('pelayanan', $record->pelayanan));
 							echo form_input($data);
 							echo form_error('pelayanan') ? form_error('pelayanan', '<p class="help-block">','</p>') : '';
 							?>
@@ -44,7 +44,7 @@
 						<div class="form-group <?php echo form_error('integritas') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Integritas','integritas');
-							$data = array('class'=>'form-control','name'=>'integritas','id'=>'integritas','type'=>'text','value'=>set_value('integritas'));
+							$data = array('class'=>'form-control','name'=>'integritas','id'=>'integritas','type'=>'text','value'=>set_value('integritas', $record->integritas));
 							echo form_input($data);
 							echo form_error('integritas') ? form_error('integritas', '<p class="help-block">','</p>') : '';
 							?>
@@ -55,7 +55,7 @@
 						<div class="form-group <?php echo form_error('komitmen') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Komitmen','komitmen');
-							$data = array('class'=>'form-control','name'=>'komitmen','id'=>'komitmen','type'=>'text','value'=>set_value('komitmen'));
+							$data = array('class'=>'form-control','name'=>'komitmen','id'=>'komitmen','type'=>'text','value'=>set_value('komitmen', $record->komitmen));
 							echo form_input($data);
 							echo form_error('komitmen') ? form_error('komitmen', '<p class="help-block">','</p>') : '';
 							?>
@@ -66,7 +66,7 @@
 						<div class="form-group <?php echo form_error('disiplin') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Disiplin','disiplin');
-							$data = array('class'=>'form-control','name'=>'disiplin','id'=>'disiplin','type'=>'text','value'=>set_value('disiplin'));
+							$data = array('class'=>'form-control','name'=>'disiplin','id'=>'disiplin','type'=>'text','value'=>set_value('disiplin', $record->disiplin));
 							echo form_input($data);
 							echo form_error('disiplin') ? form_error('disiplin', '<p class="help-block">','</p>') : '';
 							?>
@@ -77,7 +77,7 @@
 						<div class="form-group <?php echo form_error('kerjasama') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Kerjasama','kerjasama');
-							$data = array('class'=>'form-control','name'=>'kerjasama','id'=>'kerjasama','type'=>'text','value'=>set_value('kerjasama'));
+							$data = array('class'=>'form-control','name'=>'kerjasama','id'=>'kerjasama','type'=>'text','value'=>set_value('kerjasama', $record->kerjasama));
 							echo form_input($data);
 							echo form_error('kerjasama') ? form_error('kerjasama', '<p class="help-block">','</p>') : '';
 							?>
@@ -88,7 +88,7 @@
 						<div class="form-group <?php echo form_error('kepemimpinan') ? 'has-error' : null; ?>">
 							<?php
 							echo form_label('Kepemimpinan','kepemimpinan');
-							$data = array('class'=>'form-control','name'=>'kepemimpinan','id'=>'kepemimpinan','type'=>'text','value'=>set_value('kepemimpinan'));
+							$data = array('class'=>'form-control','name'=>'kepemimpinan','id'=>'kepemimpinan','type'=>'text','value'=>set_value('kepemimpinan', $record->kepemimpinan));
 							echo form_input($data);
 							echo form_error('kepemimpinan') ? form_error('kepemimpinan', '<p class="help-block">','</p>') : '';
 							?>
@@ -97,6 +97,7 @@
 
             <div class="box-footer">
               <button type="submit" class="btn btn-sm btn-flat btn-success"><i class="fa fa-save"></i> Simpan</button>
+							<a href="<?= site_url('penilai/prilaku'); ?>" class="btn btn-sm btn-flat btn-danger" onclick="back();"><i class="fa fa-close"></i> Keluar</a>
             </div>
             </form>
 					</div>

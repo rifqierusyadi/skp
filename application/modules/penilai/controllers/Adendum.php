@@ -21,7 +21,7 @@ class Adendum extends CI_Controller {
 	//halaman index
 	public function index()
 	{
-		$data['head'] 		= 'Adendum Uraian Tugas';
+		$data['head'] 		= 'Persetujuan Adendum Uraian Tugas';
 		$data['record'] 	= $this->data->get_all();
 		$data['content'] 	= $this->folder.'default';
 		$data['style'] 		= $this->folder.'style';
@@ -58,16 +58,10 @@ class Adendum extends CI_Controller {
             $col[] = $this->get_profil($row->nip)->jabatan;
             $col[] = $this->get_profil($row->nip)->unker;
             $col[] = $row->periode;
-            $col[] = '<a class="btn btn-default btn-xs btn-flat btn-block">'.status($row->nip, $row->periode).'</a>';
             
             //add html for action
-            if( !$row->status){
-                $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('penilai/uraian/detail/'.$row->nip.'/'.date('Y')).'"><i class="fa fa-search"></i></a> <a class="btn btn-xs btn-flat btn-success" href="'.site_url('penilai/uraian/approved/'.$row->nip.'/'.$row->periode).'" data-toggle="tooltip" title="Approve"><i class="fa fa-check"></i></a>
-                <a class="btn btn-xs btn-flat btn-danger" href="'.site_url('penilai/uraian/rejected/'.$row->nip.'/'.$row->periode).'" data-toggle="tooltip" title="Reject"><i class="fa fa-times"></i></a>';
-            }else{
-                $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('penilai/uraian/detail/'.$row->nip.'/'.date('Y')).'"><i class="fa fa-search"></i></a>';
+            $col[] = '<a class="btn btn-xs btn-flat btn-info" title="Detail" href="'.site_url('penilai/adendum/detail/'.$row->nip.'/'.$row->periode).'"><i class="fa fa-search"></i></a>';
 
-            }
            
             $data[] = $col;
         }

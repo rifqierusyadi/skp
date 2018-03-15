@@ -21,7 +21,7 @@ class Prilaku extends CI_Controller {
 	//halaman index
 	public function index()
 	{
-		$data['head'] 		= 'Penilaian Perilaku';
+		$data['head'] 		= 'Penilaian Perilaku Kinerja';
 		$data['record'] 	= $this->data->get_all();
 		$data['content'] 	= $this->folder.'default';
 		$data['style'] 		= $this->folder.'style';
@@ -40,7 +40,7 @@ class Prilaku extends CI_Controller {
         }
 
         var_dump($record);
-        $data['head'] 		= 'Penilaian Prilaku '.$tahun;
+        $data['head'] 		= 'Penilaian Prilaku Kinerja '.$tahun;
         $data['record'] 	= $record;
         $data['nama'] 	    = $this->get_profil($nip)->nama;
         $data['nip'] 	    = $nip;
@@ -69,7 +69,7 @@ class Prilaku extends CI_Controller {
             $col[] = $row->periode;
             
             //add html for action
-            $col[] = '<a class="btn btn-xs btn-flat btn-primary" title="Detail" href="'.site_url('penilai/prilaku/detail/'.$row->nip.'/'.date('Y')).'"><i class="fa fa-plus"></i> Penilaian</a>';
+            $col[] = '<a class="btn btn-xs btn-flat btn-primary" title="Detail" href="'.site_url('penilai/prilaku/detail/'.$row->nip.'/'.$row->periode).'"><i class="fa fa-plus"></i> Penilaian</a>';
 
             $data[] = $col;
         }

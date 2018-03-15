@@ -5,7 +5,8 @@ $(function () {
 });
 
 var $input = $(".typeahead");
-$.get('http://localhost/pegawai/api/identitas?unker=32', function(data){
+var $unker = $("#kode_unker").val();
+$.get('http://localhost/simpeg3/api/identitas?unker='+$unker, function(data){
         $input.typeahead({
           source:data,
           afterSelect: function (data) {

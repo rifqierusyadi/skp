@@ -21,7 +21,7 @@
         <td><?= $row->kuantitas; ?></td>
         <td><?= $row->satuan; ?></td>
         <td><?= $row->ak; ?></td>
-        <td><?= $row->biaya; ?></td>
+        <td><?= rupiah($row->biaya); ?></td>
         <td>
             <?php if(cek_status($row->uraian_id) == 0){ ?>
                 <a class="btn btn-xs btn-flat btn-danger" data-toggle="tooltip" title="Hapus" onclick="deleted_detail(<?= $row->id; ?>)"><i class="glyphicon glyphicon-trash"></i></a>
@@ -31,7 +31,7 @@
 <?php endforeach; ?>
 <?php else: ?>
     <tr>
-        <td colspan="4">Belum Ada Data</td>
+        <td colspan="6">Belum Ada Data</td>
     </tr>
 <?php endif; ?>
 </tbody>

@@ -21,11 +21,15 @@
                 <th>Kegiatan Tugas Jabatan</th>
                 <th>Kuantitas</th>
                 <th>Adendum</th>
-                <th>Output</th>
+                <th>Satuan</th>
+                <th>Adendum</th>
                 <th>Ak</th>
+                <th>Adendum</th>
                 <th>Biaya</th>
+                <th>Adendum</th>
                 <th>Waktu (Bulan)</th>
                 <th>Periode</th>
+                <th>Status</th>
                 <th></th>
 								</tr>
 							</thead>
@@ -35,10 +39,14 @@
                   <td class="text-right"><?= $record->kuantitas; ?></td>
                   <td class="text-right"><?= ''; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= ''; ?></td>
                   <td class="text-right"><?= $record->ak; ?></td>
+                  <td class="text-right"><?= ''; ?></td>
                   <td class="text-right"><?= $record->biaya; ?></td>
+                  <td class="text-right"><?= ''; ?></td>
                   <td class="text-center"><?= uraian($record->id); ?></td>
                   <td class="text-center"><?= $record->periode; ?></td>
+                  <td class="text-center">#</td>
                   <td class="text-center">#</td>
                 </tr>
                 <?php $detail = detail_uraian($record->id); ?>
@@ -47,12 +55,16 @@
                 <tr>
                   <td><?= bulan($row->bulan); ?></td>
                   <td class="text-right"><?= $row->kuantitas; ?></td>
-                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan) : '-'; ?></td>
+                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan)->kuantitas : '-'; ?></td>
                   <td class="text-center"><?= $record->satuan; ?></td>
+                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan)->satuan : '-'; ?></td>
                   <td class="text-right"><?= $row->ak; ?></td>
-                  <td class="text-right"><?= $row->biaya; ?></td>
-                  <td><?= '' ?></td>
+                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan)->ak : '-'; ?></td>
+                  <td class="text-right"><?= rupiah($row->biaya); ?></td>
+                  <td class="text-right"><?= adendum($record->id, $row->bulan) != '' ? adendum($record->id, $row->bulan)->biaya : '-'; ?></td>
+                  <td class="text-center"><?= '-' ?></td>
                   <td class="text-center"><?= $record->periode; ?></td>
+                  <td><?= adendum_status($record->id, $row->bulan) ? 'SETUJU' : '-'; ?></td>
                   <td class="text-center">
                   <?php 
                   $hasil = real_hasil($record->id, $row->id);
@@ -83,7 +95,7 @@
         <div class="modal-header"> 
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
            <h4 class="modal-title">
-           <i class="fa fa-calendar-o"></i> Target Waktu SKP
+           <i class="fa fa-calendar-o"></i> Pengajuan Adendum Uraian Tugas
            </h4> 
         </div> 
         <div class="modal-body">                     

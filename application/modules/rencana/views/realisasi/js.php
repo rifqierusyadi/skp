@@ -46,6 +46,7 @@ $(document).on('click', '#getUraian', function(e){
         $('#modal-loader').hide(); // hide loader  
         //$('.select2').select2();
         $('#keterangan').wysihtml5();
+        $('#biaya').number(true);
         //save_modal();
     })
     .fail(function(){

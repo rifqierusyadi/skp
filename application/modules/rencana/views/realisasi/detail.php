@@ -22,19 +22,21 @@
             <td><?= real_kuantitas($row->uraian_id, $row->id) ? real_kuantitas($row->uraian_id, $row->id) : '-' ; ?></td>
             <td><?= $row->ak; ?></td>
             <td><?= real_ak($row->uraian_id, $row->id) ? real_ak($row->uraian_id, $row->id) : '-'; ?></td>
-            <td><?= $row->biaya; ?></td>
-            <td><?= real_biaya($row->uraian_id, $row->id) ? real_biaya($row->uraian_id, $row->id) : '-'; ?></td>
+            <td><?= rupiah($row->biaya); ?></td>
+            <td><?= real_biaya($row->uraian_id, $row->id) ? real_biaya($row->uraian_id, $row->id) : rupiah(0); ?></td>
             <td><?= real_nilai($row->uraian_id, $row->id) ? real_nilai($row->uraian_id, $row->id) : '-'; ?></td>
             <td><?= real_hasil($row->uraian_id, $row->id) ? real_hasil($row->uraian_id, $row->id) : '-'; ?></td>
             <td>
+            <?php if(!status_nilai($nip, $row->id, $row->uraian_id)): ?>
             <button class="btn btn-xs btn-primary btn-flat" data-toggle="modal" data-target="#uraian-modal" data-uraian="<?= $row->uraian_id; ?>" data-detail="<?= $row->id; ?>" id="getUraian"><i class="fa fa-plus"></i> </button>
+            <?php endif; ?>
             <button class="btn btn-xs btn-default btn-flat" data-uraian="<?= $row->uraian_id; ?>" data-detail="<?= $row->id; ?>" id="getReset"><i class="fa fa-refresh"></i> </button>
             </td>
         </tr>   
     <?php endforeach; ?>
     <?php else: ?>
     <tr>
-        <td colspan="7">Tidak Ada Data !</td>
+        <td colspan="10">Tidak Ada Data !</td>
     </tr>
     <?php endif; ?>
     </tbody>

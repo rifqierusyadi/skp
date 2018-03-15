@@ -1,13 +1,25 @@
 <dl>
 <dt>URAIAN KEGIATAN</dt>
 <dd><?= $record->uraian ?></dd>
+<dt>PERIODE</dt>
+<dd><?= bulan($periode->bulan).'-'.$record->periode; ?></dd>
 </dl>
 <form id="formID" role="form" action="" method="post">
 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 <input type="hidden" name="uraian" value="<?= $uraian; ?>" />
 <input type="hidden" name="detail" value="<?= $detail; ?>" />
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_kuantitas') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Target Jumlah','t_kuantitas');
+            $data = array('readonly class'=>'form-control','name'=>'t_kuantitas','id'=>'t_kuantitas','type'=>'text','value'=>set_value('t_kuantitas',$periode->kuantitas));
+            echo form_input($data);
+            echo form_error('t_kuantitas') ? form_error('t_kuantitas', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('kuantitas') ? 'has-error' : null; ?>">
             <?php
             echo form_label('Jumlah Realisasi','kuantitas');
@@ -17,7 +29,17 @@
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_ak') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Target AK','t_ak');
+            $data = array('readonly class'=>'form-control','name'=>'t_ak','id'=>'t_ak','type'=>'text','value'=>set_value('t_ak', $periode->ak));
+            echo form_input($data);
+            echo form_error('t_ak') ? form_error('t_ak', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('ak') ? 'has-error' : null; ?>">
             <?php
             echo form_label('Angka Kredit','ak');
@@ -27,7 +49,17 @@
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_biaya') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Target Biaya','t_biaya');
+            $data = array('readonly class'=>'form-control','name'=>'t_biaya','id'=>'t_biaya','type'=>'text','value'=>set_value('t_biaya', $periode->biaya));
+            echo form_input($data);
+            echo form_error('t_biaya') ? form_error('t_biaya', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('biaya') ? 'has-error' : null; ?>">
             <?php
             echo form_label('Biaya Realisasi','biaya');

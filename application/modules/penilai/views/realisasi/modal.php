@@ -8,10 +8,11 @@
 <span class="description"><?= $nip; ?></span>
 </div>
 <br>
+<b><?= $bulan.' - '.$periode; ?></b>
 <table id="tableIDX" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
-        <th>Kegiatan Tugas Jabatan</th>
+        <th>Uraian Tugas</th>
         <th>Target<br>Kuantitas</th>
         <th>Realisasi<br>Kuantitas</th>
         <th>Target<br>Ak</th>
@@ -31,10 +32,10 @@
             <td><?= real_kuantitas($row->uraian_id, $row->id); ?></td>
             <td><?= $row->ak; ?></td>
             <td><?= real_ak($row->uraian_id, $row->id); ?></td>
-            <td><?= $row->kuantitas; ?></td>
-            <td><?= real_biaya($row->uraian_id, $row->id); ?></td>
+            <td><?= rupiah($row->biaya); ?></td>
+            <td><?= rupiah(real_biaya($row->uraian_id, $row->id)); ?></td>
             <td><?= real_nilai($row->uraian_id, $row->id); ?></td>
-            <td><input type="hidden" name="uraian_id[]" value="<?= $row->uraian_id; ?>" /><input type="hidden" name="detail_id[]" value="<?= $row->id; ?>" /><input type="text" name="hasil[]" value="" /></td>
+            <td><input type="hidden" name="uraian_id[]" value="<?= $row->uraian_id; ?>" /><input type="hidden" name="detail_id[]" value="<?= $row->id; ?>" /><input type="text" name="hasil[]" value="<?= set_value('detail_id[]', $row->hasil) ?>" /></td>
         </tr>   
     <?php endforeach; ?>
     <?php else: ?>

@@ -25,9 +25,9 @@
             <?php 
             $status = status_nilai($row->nip, $row->id, $row->uraian_id); 
             if($status){
-               echo '<a class="btn btn-xs btn-default btn-flat" href="">Proses</a>';
+               echo '<p class="text-green">Sudah Proses</p>';
             }else{
-               echo '<a class="btn btn-xs btn-default btn-flat" href="">Belum Proses</a>';
+               echo '<p class="text-red">Belum Proses</p>';
             }
             ?>
             </td>
@@ -38,7 +38,7 @@
     <?php endforeach; ?>
     <?php else: ?>
     <tr>
-        <td colspan="7">Tidak Ada Data !</td>
+        <td colspan="8">Belum Ada Pengajuan !</td>
     </tr>
     <?php endif; ?>
     </tbody>

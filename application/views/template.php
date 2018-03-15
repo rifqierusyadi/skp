@@ -77,6 +77,7 @@
 <script src="<?= base_url('asset/plugins/fastclick/lib/fastclick.js'); ?>"></script>
 <script src="<?= base_url('asset/dist/js/adminlte.min.js'); ?>"> </script>
 <script src="<?= base_url('asset/plugins/select2/dist/js/select2.full.min.js'); ?>"></script>
+<script src="<?= base_url('asset/plugins/number/jquery.number.min.js'); ?>"></script>
 <script src="<?= base_url('asset/app.js'); ?>"> </script>
 <?= isset($js) ? $this->load->view($js) : ''; ?>
 </body>

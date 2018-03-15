@@ -23,57 +23,97 @@
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_kuantitas') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Kuantitas','t_kuantitas');
+            $data = array('readonly class'=>'form-control','name'=>'t_kuantitas','id'=>'t_kuantitas','type'=>'text','value'=>set_value('kuantitas', $record->kuantitas));
+            echo form_input($data);
+            echo form_error('t_kuantitas') ? form_error('t_kuantitas', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('kuantitas') ? 'has-error' : null; ?>">
             <?php
-            echo form_label('Jumlah Output','kuantitas');
+            echo form_label('Adendum Kuantitas','kuantitas');
             $data = array('class'=>'form-control','name'=>'kuantitas','id'=>'kuantitas','type'=>'text','value'=>set_value('kuantitas'));
             echo form_input($data);
             echo form_error('kuantitas') ? form_error('kuantitas', '<p class="help-block">','</p>') : '';
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_satuan') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Satuan','t_satuan');
+            $data = array('class'=>'form-control','name'=>'t_satuan','id'=>'t_satuan','type'=>'text','value'=>set_value('t_satuan', $record->satuan), 'readonly'=>'readonly');
+            echo form_input($data);
+            echo form_error('t_satuan') ? form_error('t_satuan', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('satuan') ? 'has-error' : null; ?>">
             <?php
-            echo form_label('Satuan','satuan');
-            $data = array('class'=>'form-control','name'=>'satuan','id'=>'satuan','type'=>'text','value'=>set_value('satuan', $record->satuan), 'readonly'=>'readonly');
+            echo form_label('Adendum Satuan','satuan');
+            $data = array('class'=>'form-control','name'=>'satuan','id'=>'satuan','type'=>'text','value'=>set_value('satuan'));
             echo form_input($data);
             echo form_error('satuan') ? form_error('satuan', '<p class="help-block">','</p>') : '';
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_ak') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('AK','t_ak');
+            $data = array('readonly class'=>'form-control','name'=>'t_ak','id'=>'t_ak','type'=>'text','value'=>set_value('t_ak', $record->ak));
+            echo form_input($data);
+            echo form_error('t_ak') ? form_error('t_ak', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('ak') ? 'has-error' : null; ?>">
             <?php
-            echo form_label('Angka Kredit','ak');
+            echo form_label('Adendum AK','ak');
             $data = array('class'=>'form-control','name'=>'ak','id'=>'ak','type'=>'text','value'=>set_value('ak'));
             echo form_input($data);
             echo form_error('ak') ? form_error('ak', '<p class="help-block">','</p>') : '';
             ?>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div class="form-group <?php echo form_error('t_biaya') ? 'has-error' : null; ?>">
+            <?php
+            echo form_label('Biaya','t_biaya');
+            $data = array('readonly class'=>'form-control','name'=>'t_biaya','id'=>'t_biaya','type'=>'text','value'=>set_value('t_biaya', $record->biaya));
+            echo form_input($data);
+            echo form_error('t_biaya') ? form_error('t_biaya', '<p class="help-block">','</p>') : '';
+            ?>
+        </div>
+    </div>
+    <div class="col-md-6">
         <div class="form-group <?php echo form_error('biaya') ? 'has-error' : null; ?>">
             <?php
-            echo form_label('Biaya','biaya');
+            echo form_label('Adendum Biaya','biaya');
             $data = array('class'=>'form-control','name'=>'biaya','id'=>'biaya','type'=>'text','value'=>set_value('biaya', 0));
             echo form_input($data);
             echo form_error('biaya') ? form_error('biaya', '<p class="help-block">','</p>') : '';
             ?>
         </div>
     </div>
-    <!-- <div class="col-md-12">
-        <div class="form-group <?php // echo form_error('keterangan') ? 'has-error' : null; ?>">
+    <div class="col-md-12">
+        <div class="form-group <?php echo form_error('keterangan') ? 'has-error' : null; ?>">
             <?php
-            //echo form_label('Keterangan','keterangan');
+            echo form_label('Keterangan','keterangan');
             ?>
-            <textarea class='form-control' name='keterangan' id='keterangan'><?php //echo set_value('keterangan'); ?></textarea>
+            <textarea class='form-control' name='keterangan' id='keterangan'><?php echo set_value('keterangan'); ?></textarea>
             <?php
-            //echo form_error('keterangan') ? form_error('keterangan', '<p class="help-block">','</p>') : '';
+            echo form_error('keterangan') ? form_error('keterangan', '<p class="help-block">','</p>') : '';
             ?>
         </div>
-    </div> -->
+    </div>
 </div>
 <!-- ./box-body -->
 <div class="box-footer">

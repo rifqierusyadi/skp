@@ -11,8 +11,8 @@
 			</div>
 			<!-- box-body -->
 			<div class="box-body">
-				<button class="btn btn-flat btn-success" data-toggle="modal" data-target="#tambahan-modal" id="getTambahan"><i class="fa fa-plus"></i> Realisasi Tugas Tambahan</button>
-				<br><br>
+				<button class="btn btn-flat btn-primary btn-block" data-toggle="modal" data-target="#tambahan-modal" id="getTambahan"><i class="fa fa-list"></i> Realisasi Tugas Tambahan</button>
+				<br>
 				<div class="row text-muted well well-sm no-shadow panel" style="margin-left:1px; margin-right:1px;padding-bottom:25px;">
 					<div class="col-md-5">
 						<?php
@@ -78,7 +78,7 @@
         <div class="modal-header"> 
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
            <h4 class="modal-title">
-           <i class="fa fa-calendar-o"></i> Realisasi Uraian Tugas
+           <i class="fa fa-calendar-o"></i> Realisasi Uraian Tugas Bulanan
            </h4> 
         </div> 
         <div class="modal-body">                     

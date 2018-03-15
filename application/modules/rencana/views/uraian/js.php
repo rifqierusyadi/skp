@@ -1,6 +1,7 @@
 <script src="<?= base_url('asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'); ?>"></script>
 <script>
 $('.select2').select2();
+$('#biaya').number(true);
 $('#tableIDX').DataTable({
       paging: true,
       lengthChange: false,
