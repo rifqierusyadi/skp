@@ -118,42 +118,6 @@ function save_modal()
     });
 }
 
-// function deleted_detail(id)
-// {
-//     if(confirm('Anda yakin akan menghapus data ?'))
-//     {
-// 	  // ajax delete data to database
-// 	  	var key = $("#key").text();
-// 	  	$.ajax({
-//             url : "<?= site_url('penilai/uraian/delete_modal/'); ?>"+id,
-//             type: "POST",
-//             data: {tokensys:key},
-//             dataType: "JSON",
-//             success: function(data)
-//             {
-//                 $('#message').append('<div class="alert alert-danger">' +
-//                         '<span class="glyphicon glyphicon-ok"></span>' +
-//                         ' Data berhasil di hapus.' +
-//                         '</div>');
-                        
-//                 // tutup pesan
-//                 $('.alert-danger').delay(250).show(10, function() {
-//                     $(this).delay(1000).hide(10, function() {
-//                     $(this).remove();
-//                     });
-//                 })
-//                 $('#detail-modal').modal('hide');
-//                 reload_table();
-//             },
-//             error: function (jqXHR, textStatus, errorThrown)
-//             {
-//                 alert('Error deleting data');
-//             }
-//         });
- 
-//     }
-// }
-
 $("#filter").on('click', function(){
 	var bulan = $("#bulan").val();
 	var periode = $("#periode").val();

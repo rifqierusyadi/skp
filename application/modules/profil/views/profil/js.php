@@ -143,42 +143,4 @@ $("#parent_idx").ready(function(){
 		});
 	}
 });
-
-//$("#instansi").ready(function(){
-//    var instansi = $("#instansi").val();
-//	if(instansi){
-//		$.ajax({
-//				type: "POST",
-//				async: false,
-//				url : "<?php echo site_url('referensi/satker/get_unker/'.$this->uri->segment(4)); ?>",
-//				data: {
-//				   'instansi': instansi,
-//				   '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
-//				},
-//				success: function(msg){
-//					$('#unker').html(msg);
-//				}
-//		});
-//	}
-//});
-//
-//$("#unker").ready(function(){
-//	var instansi = $("#instansi").val();
-//    var unker = $("#unker").val();
-//	if(unker){
-//		$.ajax({
-//				type: "POST",
-//				async: false,
-//				url : "<?php echo site_url('referensi/satker/get_satker/'.$this->uri->segment(4))?>",
-//				data: {
-//				   'instansi': instansi,
-//				   'unker': unker,
-//				   '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>'
-//				},
-//				success: function(msg){
-//					$('#parent').html(msg);
-//				}
-//		});
-//	}
-//});
 </script>

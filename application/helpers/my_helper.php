@@ -708,7 +708,7 @@ if ( ! function_exists('get_profil'))
 		$CI =& get_instance();
 		$profil_json = array();
         
-		$profil_url = 'http://localhost/simpeg3/api/identitas?nip='.$nip;
+		$profil_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$nip;
 		$profil = file_get_contents($profil_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 		if($profil){
 			$profil_json = json_decode($profil);

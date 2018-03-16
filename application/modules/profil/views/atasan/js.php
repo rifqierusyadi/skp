@@ -6,7 +6,7 @@ $(function () {
 
 var $input = $(".typeahead");
 var $unker = $("#kode_unker").val();
-$.get('http://localhost/simpeg3/api/identitas?unker='+$unker, function(data){
+$.get('https://simpeg.kalselprov.go.id/api/identitas?unker='+$unker, function(data){
         $input.typeahead({
           source:data,
           afterSelect: function (data) {

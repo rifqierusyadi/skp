@@ -34,7 +34,7 @@ class Auth extends CI_Controller {
 			//$url = 'http://localhost/pegawai/api/auth?email=admin@admin.com';
 			//$url = 'https://simpeg.kalselprov.go.id/api/auth?email='.$this->input->post('email');
 			//$url = 'https://simpeg.kalselprov.go.id/api/skp?email='.$this->input->post('email');
-			$url = 'http://localhost/simpeg3/api/skp?email='.$this->input->post('email');
+			$url = 'https://simpeg.kalselprov.go.id/api/skp?email='.$this->input->post('email');
 			$data = file_get_contents($url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 			if($data){
 				$json = json_decode($data);
