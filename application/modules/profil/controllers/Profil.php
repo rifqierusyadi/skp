@@ -37,8 +37,8 @@ class Profil extends CI_Controller {
 
 		if($get_data){
 			if($get_data->penilai){
-				$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
-				//$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
+				//$penilai_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->penilai;
+				$penilai_url = 'http://localhost/simpeg3/api/identitas?nip='.$get_data->penilai;
 				$penilai = file_get_contents($penilai_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($penilai){
 					$penilai_json = json_decode($penilai);
@@ -46,8 +46,8 @@ class Profil extends CI_Controller {
 			}
 	
 			if($get_data->atasan){
-				$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
-				//$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
+				//$atasan_url = 'https://simpeg.kalselprov.go.id/api/identitas?nip='.$get_data->atasan;
+				$atasan_url = 'https://localhost/simpeg3/api/identitas?nip='.$get_data->atasan;
 				$atasan = file_get_contents($atasan_url, false, stream_context_create(array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false))));
 				if($atasan){
 					$atasan_json = json_decode($atasan);
